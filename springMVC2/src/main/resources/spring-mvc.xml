@@ -1,0 +1,48 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--SpringMVC注解驱动，使用注解方式开发，很多底层功能都是靠他实现的：创建一写支持注解开发的核心类-->
+    <!--conversion-service="conversionService 为配置转换服务-->
+    <mvc:annotation-driven conversion-service="conversionService"/>
+    <mvc:default-servlet-handler/>
+    <context:component-scan base-package="priv.noby.note.controller"/>
+
+    <!--region 配置该转换器后，属于日期的参数均会调用该日期转换器-->
+    <bean id="dateConverter" class="priv.noby.note.converter.DateConverter"/>
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <!--配置转换器-->
+        <property name="converters">
+            <set>
+                <ref bean="dateConverter"/>
+            </set>
+        </property>
+    </bean>
+    <!--endregion-->
+
+    <!--region 配置文件上传多部件解析器，id不能任意-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+    <!--endregion-->
+
+    <!--region 配置拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--配置路径，/**表示所有-->
+            <mvc:mapping path="/interceptor/**"/>
+            <bean class="priv.noby.note.interceptor.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    <!--endregion-->
+
+</beans>

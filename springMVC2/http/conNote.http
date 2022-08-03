@@ -1,0 +1,79 @@
+
+
+### springMVC 的基本使用，进入到 controller
+GET http://localhost:8080/springMVC2/conNote/controller.do
+
+### 请求方法的指定
+GET http://localhost:8080/springMVC2/conNote/onlyGet.do
+
+### 通配符的使用
+GET http://localhost:8080/springMVC2/conNote/1223/character.do
+
+### 参数的接收
+GET http://localhost:8080/springMVC2/conNote/parameter.do?username=noby&age=20&password=12345tt
+
+### 对象参数的接收，传递域属性
+GET http://localhost:8080/springMVC2/conNote/parameterObj.do?eid=200&ename=kace&dep.did=2&dep.dname=sale
+
+### 接收数组
+GET http://localhost:8080/springMVC2/conNote/parameterArray.do?ids=2&ids=3&ids=5
+
+### 处理 post 乱码
+POST http://localhost:8080/springMVC2/conNote/encoding.do
+Content-Type: application/x-www-form-urlencoded
+
+info=中文
+
+### 转发方式1
+GET http://localhost:8080/springMVC2/conNote/forward.do
+
+### 转发方式2
+GET http://localhost:8080/springMVC2/conNote/forward2.do
+
+### 异步请求
+GET http://localhost:8080/springMVC2/conNote/asynchronous.do
+x-requested-with: XMLHttpRequest
+
+### 传统异步请求
+GET http://localhost:8080/springMVC2/conNote/asynchronous2.do
+
+### 使用对象封装响应
+GET http://localhost:8080/springMVC2/conNote/ResponseResult.do
+
+### requestBody 的使用
+POST http://localhost:8080/springMVC2/conNote/requestBody.do
+Content-Type: application/json
+
+{
+  "eid":"10",
+  "ename":"noby",
+  "dep":{"did": "100","dname": "sale"}
+}
+
+### 日期参数的处理
+GET http://localhost:8080/springMVC2/conNote/date.do?date=2022-1-4
+
+### 对象封装时日期属性的处理
+GET http://localhost:8080/springMVC2/conNote/date2.do?eid=123&ename=noby&hiredate=2020-3-11
+
+### 日期转换器的配置和使用
+GET http://localhost:8080/springMVC2/conNote/date3.do?date=2020-3-11
+
+### 同步异常处理
+GET http://localhost:8080/springMVC2/conNote/exception.do
+
+### 异步异常处理
+GET http://localhost:8080/springMVC2/conNote/exception2.do
+
+### 统一的同步异常处理测试
+GET http://localhost:8080/springMVC2/conNote/exception3.do
+
+### 统一的异步异常处理测试
+GET http://localhost:8080/springMVC2/conNote/exception4.do
+x-requested-with: XMLHttpRequest
+
+
+
+
+
+

@@ -1,0 +1,3 @@
+### 全局的异步异常处理测试
+GET http://localhost:8080/springMVC2/exception5.do
+x-requested-with: XMLHttpRequest

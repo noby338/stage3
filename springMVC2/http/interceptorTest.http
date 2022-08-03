@@ -1,0 +1,2 @@
+### 拦截器
+GET http://localhost:8080/springMVC2/interceptor/interceptorTest.do

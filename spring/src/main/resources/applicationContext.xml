@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    默认装配方式-->
+    <!--可以再此处修改 class 属性值实现解耦，从而达到了修改配置文件影响程序的运行-->
+<!--        <bean id="studentService" class="priv.noby.note.service.impl.StudentServiceImpl"/>-->
+    <bean id="studentService" class="priv.noby.note.service.impl.StudentServiceImpl2"/>
+
+<!--    动态工厂 bean 装配方式-->
+    <bean id="studentServiceFactory" class="priv.noby.note.service.impl.StudentServiceFactory"/>
+    <!--可以再此处修改 class 属性值实现解耦，从而达到了修改配置文件影响程序的运行-->
+<!--    <bean id="studentService" factory-bean="studentServiceFactory" factory-method="getStudentService"/>-->
+    <bean id="studentService2" factory-bean="studentServiceFactory" factory-method="getStudentService2"/>
+
+<!--    静态工厂 bean 装配方式，调用的方法必须是一个静态方法-->
+    <bean id="studentService3" class="priv.noby.note.service.impl.StudentServiceFactory" factory-method="getStudentService3"/>
+
+<!--    Bean 的作用域-->
+    <!--单例模式（默认）-->
+    <bean id="student" class="priv.noby.note.entity.Student" scope="singleton"/>
+    <!--原型模式，每次 getBean() 底层使用 clone() 方法创建一个对象-->
+<!--    <bean id="student" class="priv.noby.note.entity.Student" scope="prototype"/>-->
+
+<!--    Bean 的创建和销毁-->
+    <!--init() 方法在实例化的时候执行，destroy() 在单例模式，且关闭容器时执行-->
+    <bean id="student2" class="priv.noby.note.entity.Student" init-method="init" destroy-method="destroy"/>
+
+<!--    Bean 设值注入 DI(dependency injection)（依赖注入）-->
+    <bean id="student3" class="priv.noby.note.entity.Student">
+        <!--设值注入：在创建对象后调用对象的 setter() 给对象的属性赋值，基本数据类型和 String 使用 value ,对象使用 ref-->
+        <property name="age" value="20"/>
+        <property name="name" value="noby"/>
+        <property name="school" ref="school-bean"/>
+    </bean>
+    <bean id="school-bean" class="priv.noby.note.entity.School">
+        <property name="scId" value="100"/>
+        <property name="scName" value="蜗牛大学"/>
+    </bean>
+
+    <!--
+    引用类型可以自动注入：
+    byName:按名称自动注入
+    bean的id和另一个bean的属性名字相同，这个bean的属性值会自动注入
+    byType:按类型自动注入
+    自词查找改和该属性类型相同的bean,及其子类型的bean,自动注入,多个类的对象将会异常
+    -->
+    <bean id="student32" class="priv.noby.note.entity.Student" autowire="byName">
+        <property name="age" value="20"/>
+        <property name="name" value="noby"/>
+    </bean>
+    <bean id="student33" class="priv.noby.note.entity.Student" autowire="byType">
+        <property name="age" value="20"/>
+        <property name="name" value="noby"/>
+    </bean>
+
+<!--    Bean 构造注入 DI(dependency injection)（依赖注入）-->
+    <bean id="student4" class="priv.noby.note.entity.Student">
+        <!--构造注入：调用构造方法给对象的属性赋值-->
+        <constructor-arg name="name" value="kace"/>
+        <constructor-arg name="age" value="20"/>
+    </bean>
+
+<!--    复杂属性的设值注入-->
+    <bean id="some" class="priv.noby.note.entity.Some">
+        <!--基本数据类型和字符串的数组-->
+        <property name="strArr">
+            <array>
+                <value>arr1</value>
+                <value>arr2</value>
+            </array>
+        </property>
+        <!--引用数据类型的数组-->
+        <property name="students">
+            <array>
+                <ref bean="student3"/>
+                <ref bean="student4"/>
+            </array>
+        </property>
+        <!--基本数据类型和字符串的List-->
+        <property name="strList">
+            <list>
+                <value>str1</value>
+                <value>str2</value>
+            </list>
+        </property>
+        <!--引用数据类型的List-->
+        <property name="stuList">
+            <list>
+                <ref bean="student3"/>
+                <ref bean="student4"/>
+            </list>
+        </property>
+        <!--基本数据类型的Set-->
+        <property name="strSet">
+            <set>
+                <value>set</value>
+                <value>set2</value>
+            </set>
+        </property>
+        <!--基本数据类型和字符串的Map-->
+        <property name="strMap">
+            <map>
+                <entry key="k" value="val"/>
+                <entry key="k2" value="val2"/>
+            </map>
+        </property>
+        <!--引用数据类型的Map-->
+        <property name="studentSchoolMap">
+            <map>
+                <entry key-ref="student3" value-ref="school-bean"/>
+                <entry key-ref="student4" value-ref="school-bean"/>
+            </map>
+        </property>
+        <!--properties-->
+        <property name="properties">
+            <props>
+                <prop key="k">val</prop>
+                <prop key="k2">val2</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>

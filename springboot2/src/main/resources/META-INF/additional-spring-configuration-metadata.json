@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "upload.resourceHandler",
+      "type": "java.lang.String",
+      "description": "Description for upload.resourceHandler."
+  }
+] }

@@ -1,0 +1,29 @@
+
+###
+POST http://localhost:8080/login
+Content-Type: application/json
+x-requested-with: XMLHttpRequest
+
+{
+  "username":"a",
+  "password":"aa"
+}
+
+###
+GET http://localhost:8080/test
+Content-Type: application/json
+x-requested-with: XMLHttpRequest
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqYXZhIiwiZXhwIjoxNjU2OTQwNzkxLCJpYXQiOjE2NTY5Mzg5OTEsInVzZXJuYW1lIjoiYSJ9.mIpaXNW4F0SWH6xSTpfDRvvjh49z83__Q1k2JQIVv8g
+
+###
+GET http://localhost:8080/test2
+Content-Type: application/json
+x-requested-with: XMLHttpRequest
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqYXZhIiwiZXhwIjoxNjU2OTM3MDAzLCJpYXQiOjE2NTY5MzUyMDMsInVzZXJuYW1lIjoiYiJ9.CD89WGPVN8gknS-2N93Q0e2bR0pHyhNmmcreVCt9HQU
+
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+
+
+
+###
+GET http://localhost:8080/login
+Content-Type: application/json
+x-requested-with: XMLHttpRequest
+
+{
+  "username":"root",
+  "password":"123"
+}
+
+### session 登录验证
+GET http://localhost:8080/login?username=root&password=123
+
+### jwt 登录验证
+GET http://localhost:8080/login?username=root&password=123
+

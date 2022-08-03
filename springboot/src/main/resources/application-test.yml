@@ -1,0 +1,29 @@
+
+# 设值注入
+emp:
+  eid: 10
+  ename: kace
+  dep:
+    did: 100
+    dname: devlop
+
+# 配置日志的级别
+# root 为输出包括系统日志在内的所有日志信息
+# 可配置指定路径输出日志
+logging:
+  level:
+    #    root: info
+    priv.noby.springboot: trace
+
+# thymeleaf 的缓存开关
+spring:
+  thymeleaf:
+    cache: false
+  # 配置日期格式
+  mvc:
+    format:
+      date: yyyy-MM-dd
+# 自定义的文件虚拟路径配置
+upload:
+  resourceHandler: /image/**
+  resourceHandLocations: D:/image/

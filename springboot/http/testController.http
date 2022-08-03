@@ -1,0 +1,29 @@
+### 测试 SpringBoot 的基本使用
+GET http://localhost:8080/test
+
+### 测试 SpringBoot 同时开启多个 tomcat
+GET http://localhost:8082/test
+
+### 测试 SpringBoot 启动参数别名的配置 tomcat
+GET http://localhost:8085/test
+
+### 测试 SpringBoot 的静态资源（static 路径下的资源） （当配置配置类 WebMvcConfigurer 后访问的是动态资源路径）
+GET http://localhost:8080/a.html
+
+### 测试 SpringBoot 的动态资源 a.html（templates 路径下的资源）
+GET http://localhost:8080/templates
+
+### 测试 SpringBoot 的 thymeleaf
+GET http://localhost:8080/thymeleaf
+
+### 测试 SpringBoot 的 拦截器
+GET http://localhost:8080/index.html
+
+### 测试 SpringBoot 的日期转换
+GET http://localhost:8080/date?eid=1&ename=noby&date=1999-3-11
+
+### 测试 SpringBoot 读取本地虚拟目录的文件
+GET http://localhost:8080/image/joker.jpg
+
+### 测试 SpringBoot 上传文件到本地虚拟目录
+GET http://localhost:8080/upload.html

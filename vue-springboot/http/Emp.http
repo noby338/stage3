@@ -1,0 +1,19 @@
+### 测试
+GET http://localhost:8080/selectEmp?pageNum=1&eid=3
+
+###
+POST http://localhost:8082/selectEmp/1
+Content-Type: application/json
+x-requested-with: XMLHttpRequest
+
+{
+  "eid":"26",
+  "ename":"noby",
+  "dep":{"did": "1001","dname": "销售"}
+}
+
+###
+DELETE http://localhost:8082/deleteEmpByEid/20000
+Content-Type: application/json
+x-requested-with: XMLHttpRequest
+

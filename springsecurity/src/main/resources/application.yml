@@ -1,0 +1,9 @@
+spring:
+  mvc:
+# 前端传后端的 json 时间格式
+    format:
+      date: yyyy-MM-dd
+# 配置后端传给前端的 json 时间格式
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: GMT+8
