@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import priv.noby.note.config.SpringConfig;
+import priv.noby.note.config.SpringConfiguration;
 import priv.noby.note.entity.Student;
 import priv.noby.note.service.impl.StudentServiceImpl;
 
@@ -15,17 +15,18 @@ public class StudentServiceTest {
 
     @Before
     public void setUp() throws Exception {
-        applicationContext = new AnnotationConfigApplicationContext(SpringConfig.class);
+        //使用ClassPathXmlConfigApplicationContext类加载配置文件，AnnotationConfigApplicationContext类加载配置类
+        applicationContext = new AnnotationConfigApplicationContext(SpringConfiguration.class);
         studentService = (StudentServiceImpl) applicationContext.getBean("studentServiceImpl");
     }
 
     @Test
-    public void testFindStudent() {
-        Student student = studentService.findStudent(2022001);
+    public void testSelectById() {
+        Student student = studentService.selectById(1);
         System.out.println(student);
     }
 
     @Test
-    public void testAddStudent() {
+    public void testInsert() {
     }
 }

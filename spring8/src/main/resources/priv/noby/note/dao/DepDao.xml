@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="priv.noby.note.dao.DepDao">
+    <resultMap id="depMap" type="dep">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <collection column="id" property="empList" ofType="emp" select="selectEmpById"/>
+    </resultMap>
+    <select id="selectAll" resultMap="depMap">
+        select id, name
+        from dep
+    </select>
+    <delete id="deleteById">
+        delete
+        from dep
+        where id = #{id}
+    </delete>
+
+    <select id="selectEmpById" resultType="emp">
+        select id, name, did
+        from emp
+        where id = #{id}
+    </select>
+
+</mapper>

@@ -21,7 +21,7 @@ public class StudentServiceTest {
 
     @Test
     public void testFindStudent() {
-        Student student = studentService.findStudent(2022001);
+        Student student = studentService.selectById(1);
         System.out.println(student);
     }
 

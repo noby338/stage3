@@ -2,6 +2,7 @@ package priv.noby.note.entity;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -9,15 +10,18 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-@Component //配置该类可通过 Spring 框架实例化  以下注解等同：@Repository（给Dao类使用） @Service @controller
-@Scope("singleton")//配置作用范围（单例模式、原型模式） singleton 为单例
+//配置该类可通过 Spring 框架实例化  以下注解等同：@Repository（给Dao类使用） @Service @controller
+@Component
+//配置作用范围（单例模式、原型模式）(默认的注入的为单例，@Scope("singleton")可省略不写)
+@Scope("singleton")
 public class Student {
-    @Value("noby") //给基本数据类型赋值
+    //给基本数据类型赋值，可使用spEL(spring表达式)直接读取Spring容器中的参数(该参数来自配置文件读取的properties文件)
+    @Value("${jdbc.driverClassName}")
     private String name;
     @Value("20")
     private int age;
     @Autowired //通过属性类型自动注入注解（给引用数据类型赋值）
-//    @Qualifier("school")//加上该注解表示通过属性名自动注入
+    @Qualifier("school")//加上该注解表示通过属性名(id)自动注入
 
 //    @Resource//jdk1.6之后出的注解，等同于 @Autowired 注解
 //    @Resource(name = "school")//等同于 @Autowired 加 @Qualifier("school")注解

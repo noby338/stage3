@@ -6,10 +6,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import priv.noby.note.entity.Student;
 
-import java.util.Date;
-
-import static org.junit.Assert.*;
-
 public class StudentDaoTest {
 
     private ApplicationContext applicationContext;
@@ -17,21 +13,20 @@ public class StudentDaoTest {
 
     @Before
     public void setUp(){
-        applicationContext = new ClassPathXmlApplicationContext("applicationcontext.xml");
+        applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         studentDao = (StudentDao) applicationContext.getBean("studentDao");
     }
     @Test
     public void testSelectById() {
-        Student student = studentDao.selectById(2022001);
+        Student student = studentDao.selectById(1);
         System.out.println("student = " + student);
     }
 
     @Test
     public void testInsert() {
         Student student = new Student();
-        student.setName("noby2");
-        student.setGender("m");
-        student.setBirthday(new Date());
+        student.setName("noby");
+        student.setAge(20);
         boolean b = studentDao.insert(student);
         System.out.println(b);
     }

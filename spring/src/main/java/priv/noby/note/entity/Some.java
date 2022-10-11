@@ -14,12 +14,12 @@ import java.util.Set;
 @NoArgsConstructor
 public class Some {
     private String[] strArr;
-    private Student[] students;
+    private Student[] studentArr;
     private List<String> strList;
     private List<Student> stuList;
     private Set<String> strSet;
     private Map<String,String> strMap;
-    private Map<Student,School> studentSchoolMap;
+    private Map<Student,Student> studentStudentMap;
     private Properties properties;
 }
 

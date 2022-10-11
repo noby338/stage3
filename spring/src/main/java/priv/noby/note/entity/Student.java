@@ -1,11 +1,15 @@
 package priv.noby.note.entity;
 
 
+import lombok.Data;
+
 import java.util.Objects;
 
+@Data
 public class Student {
+    private Integer id;
     private String name;
-    private int age;
+    private Integer age;
     private School school;
 
     public void init() {
@@ -17,16 +21,18 @@ public class Student {
     }
 
     public Student() {
+        System.out.println("Student.Student 无参构造");
     }
 
     public Student(String name, int age) {
         this.name = name;
         this.age = age;
+        System.out.println("Student.Student 有参构造");
     }
 
     public void setAge(int age) {
         this.age = age;
-        System.out.println("调用了 setAge() 方法");
+        System.out.println("Student.setAge");
     }
 
     public int getAge() {

@@ -9,7 +9,7 @@ public class StudentTest {
     @Test
     public void student() {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        //虚拟机关闭之前自动执行 close() 方法(回调函数)
+        //虚拟机关闭之前自动执行 close() 方法(回调函数)(用于查看destroy方法)
         ((ClassPathXmlApplicationContext) applicationContext).registerShutdownHook();
         //该方法判断是否存在某个对象
         Student student = (Student) applicationContext.getBean("student");

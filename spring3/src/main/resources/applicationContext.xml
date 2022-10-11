@@ -1,17 +1,21 @@
+<!--
+加载使用配置文件必须引入context的命名空间及地址，
+xmlns:context="http://www.springframework.org/schema/context"
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+-->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="
-        http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         ">
     <!--
-    读取配置文件
+    读取配置文件，使用该标签前必须引入context的命名空间及地址
     system-properties-mode="NEVER"表示不读取系统的属性（解决自定义属性名和系统属性名冲突）
     -->
-    <context:property-placeholder location="db.properties" system-properties-mode="NEVER"/>
+<!--    <context:property-placeholder location="db.properties" system-properties-mode="NEVER"/>-->
+    <context:property-placeholder location="classpath:db.properties"/>
     <!--配置 SqlSessionFactoryBean，创建 SqlSession 对象 (来自 Spring mybatis 的整合包)-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="typeAliasesPackage" value="priv.noby.note.entity"/>
@@ -19,6 +23,7 @@
     </bean>
     <!--配置数据源-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <!--${}是Spring四大核心中的spEL(Spring表达式)，通过spEL获取spring中的数据-->
         <property name="driverClassName" value="${jdbc.driverClassName}"/>
         <property name="url" value="${jdbc.url}"/>
         <property name="username" value="${jdbc.username}"/>

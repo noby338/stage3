@@ -12,12 +12,12 @@ public class StudentServiceImpl implements StudentService {
     StudentDao studentDao;
 
     @Override
-    public Student findStudent(int id) {
+    public Student selectById(int id) {
         return studentDao.selectById(id);
     }
 
     @Override
-    public boolean addStudent(Student student) {
+    public boolean insert(Student student) {
         return studentDao.insert(student);
     }
 

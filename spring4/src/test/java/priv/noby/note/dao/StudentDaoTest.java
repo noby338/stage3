@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import priv.noby.note.config.SpringConfig;
+import priv.noby.note.config.SpringConfiguration;
 import priv.noby.note.entity.Student;
 
 public class StudentDaoTest {
@@ -14,13 +14,13 @@ public class StudentDaoTest {
 
     @Before
     public void setUp() throws Exception {
-        applicationContext = new AnnotationConfigApplicationContext(SpringConfig.class);
+        applicationContext = new AnnotationConfigApplicationContext(SpringConfiguration.class);
         studentDao = (StudentDao) applicationContext.getBean("studentDao");
     }
 
     @Test
     public void testSelectById() {
-        Student student = studentDao.selectById(2022001);
+        Student student = studentDao.selectById(1);
         System.out.println(student);
     }
 }

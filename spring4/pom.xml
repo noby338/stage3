@@ -70,6 +70,12 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.21</version>
         </dependency>
+        <!--Spring的junit的整合包，可用于测试时可注入Spring-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>5.2.15.RELEASE</version>
+        </dependency>
     </dependencies>
 
 </project>

@@ -5,8 +5,7 @@ spring3Note
   * 事务的配置
     * 约束头
       * xmlns:tx="http://www.springframework.org/schema/tx"
-      * http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx.xsd">
+      * http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
     * 配置事务注解驱动
     * 配置事务管理 bean
   * 需要事务管理的方法上加入注解 @Transactional

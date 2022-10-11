@@ -15,7 +15,7 @@
 
 
     <dependencies>
-        <!--该包可以同时依赖4个 spring 的核心包-->
+        <!--该包可以同时依赖4个 spring 的核心包(beans,core,context,spEL)-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -28,10 +28,21 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.9</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.27</version>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.22</version>
         </dependency>
+
     </dependencies>
 
 </project>
