@@ -1,0 +1,21 @@
+<!--该配置文件为SpringMVC的配置文件，相对与spring的配置文件(applicationContext.xml)中的内容应该分割开来书写-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+">
+
+    <!--Controller的组件扫描(用于使用@controller和RequestMapping注解)-->
+    <context:component-scan base-package="priv.noby.note.controller"/>
+
+    <!--配置内部资源试图解析器-->
+    <!--配置视图解析器后可省略前后缀的书写(对完整路径无效，如"forward:/index.jsp")-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--controller返回时的路径书写可省略该前缀，默认为redirect:-->
+        <property name="prefix" value="/jsp/"/>
+        <!--controller返回时的路径书写可省略该后缀-->
+        <property name="suffix" value=".jsp"/>
+    </bean>
+</beans>

@@ -1,0 +1,5 @@
+### 测试MyHandlerInterceptor拦截器是否成功
+GET http://localhost:8080/springMVC6/student/selectById/1
+
+
+

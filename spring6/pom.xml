@@ -70,7 +70,7 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.21</version>
         </dependency>
-        <!--Spring 使用 AOP-->
+        <!--AOP 织入的方式使用 aspectj(应用性好于springframework自带的AOP，Spring官方推荐使用该方式进行织入配置)-->
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>

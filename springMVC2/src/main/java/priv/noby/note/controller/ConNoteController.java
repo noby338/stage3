@@ -30,10 +30,9 @@ public class ConNoteController {
      * springMVC 的基本使用，进入到 controller
      */
     @RequestMapping("/controller.do")
-    public ModelAndView controller() {
-        ModelAndView modelAndView = new ModelAndView();
-        System.out.println("UserController.controller");
-        return modelAndView;
+    @ResponseBody
+    public void controller() {
+        System.out.println("ConNoteController.controller");
     }
 
     /**
@@ -41,10 +40,9 @@ public class ConNoteController {
      */
     @RequestMapping(value = "/onlyGet.do", method = RequestMethod.GET)
 //    @PostMapping("/onlyGet.do")//同上
-    public ModelAndView onlyGet() {
-        ModelAndView modelAndView = new ModelAndView();
-        System.out.println("UserController.onlyGet");
-        return modelAndView;
+    @ResponseBody
+    public void onlyGet() {
+        System.out.println("ConNoteController.onlyGet");
     }
 
 
@@ -54,10 +52,9 @@ public class ConNoteController {
      * /**表示任意层次数
      */
     @RequestMapping("/*/character.do")
-    public ModelAndView character() {
-        ModelAndView modelAndView = new ModelAndView();
-        System.out.println("UserController.character");
-        return modelAndView;
+    @ResponseBody
+    public void character() {
+        System.out.println("ConNoteController.character");
     }
 
     /**
@@ -66,14 +63,13 @@ public class ConNoteController {
      * 当请求参数和参数列表不同时使用 @RequestParam 注解
      */
     @RequestMapping("/parameter.do")
-    public ModelAndView parameter(String username, int age
+    @ResponseBody
+    public void parameter(String username, int age
             , @RequestParam("password") String code) {
-        ModelAndView modelAndView = new ModelAndView();
-        System.out.println("UserController.parameter");
+        System.out.println("ConNoteController.parameter");
         System.out.println("username = " + username);
         System.out.println("age = " + age);
         System.out.println("code = " + code);
-        return modelAndView;
     }
 
     /**
@@ -81,11 +77,10 @@ public class ConNoteController {
      * 自动将键值对封装成为对象（该请求为非json的请求）
      */
     @RequestMapping("/parameterObj.do")
-    public ModelAndView parameterObj(Emp emp) {
-        ModelAndView modelAndView = new ModelAndView();
-        System.out.println("UserController.parameterObj");
+    @ResponseBody
+    public void parameterObj(Emp emp) {
+        System.out.println("ConNoteController.parameterObj");
         System.out.println("emp = " + emp);
-        return modelAndView;
     }
 
     /**
@@ -93,11 +88,10 @@ public class ConNoteController {
      * 自动将多个相同的参数名封装为一个数组
      */
     @RequestMapping("/parameterArray.do")
-    public ModelAndView parameterArray(int[] ids) {
-        ModelAndView modelAndView = new ModelAndView();
-        System.out.println("UserController.parameterArray");
+    @ResponseBody
+    public void parameterArray(int[] ids) {
+        System.out.println("ConNoteController.parameterArray");
         System.out.println("Arrays.toString(ids) = " + Arrays.toString(ids));
-        return modelAndView;
     }
 
     /**
@@ -107,11 +101,10 @@ public class ConNoteController {
      * post 乱码处理方式为在 web.xml 中配置
      */
     @RequestMapping("/encoding.do")
-    public ModelAndView encoding(String info) {
-        ModelAndView modelAndView = new ModelAndView();
-        System.out.println("UserController.encoding");
+    @ResponseBody
+    public void encoding(String info) {
+        System.out.println("ConNoteController.encoding");
         System.out.println("info = " + info);
-        return modelAndView;
     }
 
     /**
@@ -129,6 +122,7 @@ public class ConNoteController {
      */
     @RequestMapping("/forward2.do")
     public String forward2(Model model) {
+        System.out.println("ConNoteController.forward2");
         model.addAttribute("info", "information");
         //使用Model做参数，String做返回值，和 ModelAndView 做返回值一样
         return "/forward.jsp";
@@ -145,7 +139,7 @@ public class ConNoteController {
     @ResponseBody
     @RequestMapping("/asynchronous.do")
     public Emp asynchronous() {
-        System.out.println("UserController.asynchronous");
+        System.out.println("ConNoteController.asynchronous");
         Emp emp = new Emp(200, "noby", null);
         System.out.println("emp = " + emp);
         return emp;
@@ -157,7 +151,7 @@ public class ConNoteController {
      */
     @RequestMapping("/asynchronous2.do")
     public void asynchronous2(HttpServletResponse response) throws IOException {
-        System.out.println("UserController.asynchronous2");
+        System.out.println("ConNoteController.asynchronous2");
         Emp emp = new Emp(200, "noby", null);
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.writeValue(response.getWriter(), emp);
@@ -169,7 +163,7 @@ public class ConNoteController {
     @ResponseBody
     @RequestMapping("/ResponseResult.do")
     public ResponseResult<Emp> ResponseResult() {
-        System.out.println("UserController.ResponseResult");
+        System.out.println("ConNoteController.ResponseResult");
         Emp emp = new Emp(200, "noby", null);
         return new ResponseResult<>(200, "ok", emp);
     }
@@ -184,7 +178,7 @@ public class ConNoteController {
     @ResponseBody
     @RequestMapping("/requestBody.do")
     public Emp requestBody(@RequestBody Emp emp) {
-        System.out.println("UserController.requestBody");
+        System.out.println("ConNoteController.requestBody");
         System.out.println("emp = " + emp);
         return emp;
     }
@@ -192,12 +186,12 @@ public class ConNoteController {
     /**
      * 日期属性的处理
      *
-     * @DateTimeFormat(pattern="yyyy-MM-dd") 表示指定的日期格式，可以省略（默认为yyyy/MM/dd）
+     * @DateTimeFormat(pattern="yyyy-MM-dd") Date的类型转换器可直接使用该注解(测试前注释掉在配置文件中声明的转换器)
      */
     @ResponseBody
     @RequestMapping("/date.do")
     public Date data(@DateTimeFormat(pattern = "yyyy-MM-dd") Date date) {
-        System.out.println("UserController.date");
+        System.out.println("ConNoteController.date");
         System.out.println("date = " + date);
         return date;
     }
@@ -208,7 +202,7 @@ public class ConNoteController {
     @ResponseBody
     @RequestMapping("/date2.do")
     public Emp data2(Emp emp) {
-        System.out.println("UserController.date2");
+        System.out.println("ConNoteController.date2");
         System.out.println("emp = " + emp);
         return emp;
     }
@@ -221,7 +215,7 @@ public class ConNoteController {
     @ResponseBody
     @RequestMapping("/date3.do")
     public Date data3(Date date) {
-        System.out.println("UserController.date3");
+        System.out.println("ConNoteController.date3");
         System.out.println("date = " + date);
         return date;
     }
@@ -231,6 +225,7 @@ public class ConNoteController {
      */
     @RequestMapping("/exception.do")
     public ModelAndView exception() {
+        System.out.println("ConNoteController.exception");
         ModelAndView modelAndView = new ModelAndView();
         try {
             System.out.println("UserController.exception");
@@ -250,7 +245,7 @@ public class ConNoteController {
     @ResponseBody
     @RequestMapping("/exception2.do")
     public ResponseResult<String> exception2() {
-        System.out.println("UserController.exception2");
+        System.out.println("ConNoteController.exception2");
         ResponseResult<String> responseResult;
         try {
             int i = 1 / 0;
@@ -270,6 +265,7 @@ public class ConNoteController {
      */
     @ExceptionHandler
     public void exceptionHandler(HttpServletRequest request, HttpServletResponse response, Exception e) throws IOException, ServletException {
+        System.out.println("ConNoteController.exceptionHandler");
         if (request.getHeader("X-Requested-With") != null) {
             System.out.println("异步异常处理");
             new ObjectMapper().writeValue(response.getWriter(), new ResponseResult<>(500, e.getMessage(), null));
@@ -283,10 +279,11 @@ public class ConNoteController {
     /**
      * 设置统一的异常处理（定义在Controller中），SpringMVC的底层是AOP
      *
-     * @@ExceptionHandler(ArithmeticException.class) 表示指定处理某一种异常
+     * @ExceptionHandler(ArithmeticException.class) 表示指定处理某一种异常
      */
     @ExceptionHandler(ArithmeticException.class)
     public void arithmeticException(HttpServletRequest request, HttpServletResponse response, Exception e) throws IOException, ServletException {
+        System.out.println("ConNoteController.arithmeticException");
         if (request.getHeader("X-Requested-With") != null) {
             System.out.println("异步异常处理arithmeticException");
             new ObjectMapper().writeValue(response.getWriter(), new ResponseResult<>(500, e.getMessage(), null));
@@ -302,7 +299,7 @@ public class ConNoteController {
      */
     @RequestMapping("/exception3.do")
     public ModelAndView exception3() {
-        System.out.println("UserController.exception3");
+        System.out.println("ConNoteController.exception3");
         ModelAndView modelAndView = new ModelAndView();
 //        String str = null;
 //        str.equals("null");
@@ -316,7 +313,7 @@ public class ConNoteController {
     @ResponseBody
     @RequestMapping("/exception4.do")
     public ResponseResult<String> exception4() {
-        System.out.println("UserController.exception4");
+        System.out.println("ConNoteController.exception4");
         ResponseResult<String> responseResult;
         int i = 1 / 0;
         responseResult = new ResponseResult<>(200, "ok", "info");
@@ -332,7 +329,7 @@ public class ConNoteController {
     @ResponseBody
     @RequestMapping("/fileupload.do")
     public ResponseResult<String> fileupload(MultipartFile img) {
-        System.out.println("UserController.fileupload");
+        System.out.println("ConNoteController.fileupload");
         ResponseResult<String> responseResult;
         File file = new File("D:\\image", UUID.randomUUID()+img.getOriginalFilename());
         try {

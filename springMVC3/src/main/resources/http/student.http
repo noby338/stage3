@@ -1,0 +1,11 @@
+### springMVC 的基本使用，进入到 controller
+GET http://localhost:8080/springMVC3/student/selectById
+
+### springMVC 的@RequestMapping()的method参数为post，进入到 controller
+POST http://localhost:8080/springMVC3/student/selectById2
+
+### springMVC 的@RequestMapping()的params参数为username，进入到 controller
+GET http://localhost:8080/springMVC3/student/selectById3?username=noby
+
+### springMVC 的试图解析器的配置测试是否成功
+GET http://localhost:8080/springMVC3/student/otherJsp

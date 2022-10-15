@@ -1,14 +1,21 @@
 package priv.noby.note.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import priv.noby.note.dao.StudentDao;
 import priv.noby.note.entity.Student;
 import priv.noby.note.service.StudentService;
 
+import javax.annotation.Resource;
+
 @Service
 public class StudentServiceImpl implements StudentService {
-    @Autowired
+    /*
+    使用 @Autowired 注解导入 Mapper 对象报错的原因，是因为 @Autowired 默认情况下，需要注入一个非 NULL 的对象，
+    而被 @Mapper 修饰的类为 MyBatis 的注解，IDEA 并不能很好的识别其为非 NULL 对象，因此就会报错。
+    当然，它的解决方案也有很多，推荐使用 @Resource 替代 @Autowired 注解的方式来解决此问题。
+     */
+//    @Autowired
+    @Resource
     StudentDao studentDao;
 
     @Override

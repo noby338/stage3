@@ -13,7 +13,7 @@
       听器内部加载Spring配置文件，创建应用上下文对象，并存储到ServletContext域中，提供了一个客户端工
       具WebApplicationContextUtils供使用者获得应用上下文对象。
       所以我们需要做的只有两件事：
-      ①在web.xml中配置ContextLoaderListener监听器（导入spring-web坐标
+      ①在web.xml中配置ContextLoaderListener监听器(导入spring-web坐标)
       ②使用WebApplicationContextUtils获得应用上下文对象ApplicationContext
     -->
 

@@ -1,0 +1,41 @@
+<!--该配置文件为SpringMVC的配置文件，相对与spring的配置文件(applicationContext.xml)中的内容应该分割开来书写-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+">
+
+    <!--Controller的组件扫描(用于使用@controller和RequestMapping注解)-->
+    <context:component-scan base-package="priv.noby.note.controller"/>
+
+    <!--mvc的注解驱动-->
+    <!--使用<mvc:annotation-driven>自动加载 RequestMappingHandlerMapping（处理映射器）和
+    RequestMappingHandlerAdapter（处理适配器），可替代注解处理器和适配器的配置。
+    同时使用<mvc:annotation-driven>默认底层就会集成jackson进行对象或集合的json格式字符串的转换。-->
+    <mvc:annotation-driven/>
+    <!--无法访问的静态资源交给原始web容器访问(tomcat)-->
+    <mvc:default-servlet-handler/>
+
+    <!--配置拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--mapping表示拦截的资源，path="/**"表示拦截所有资源-->
+            <mvc:mapping path="/**"/>
+            <bean class="priv.noby.note.interceptor.MyHandlerInterceptor"/>
+        </mvc:interceptor>
+
+        <!--登录验证拦截器-->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <!--不经过拦截器直接放行的资源-->
+            <!--不需要配置jsp的拦截，拦截器默认jsp放行-->
+            <mvc:exclude-mapping path="/user/login"/>
+            <bean class="priv.noby.note.interceptor.PrivilegeInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+</beans>

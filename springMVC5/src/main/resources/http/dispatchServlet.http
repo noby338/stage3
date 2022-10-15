@@ -1,0 +1,3 @@
+### 中央调度器配置路径，静态资源是否可访问测试(css是否生效)
+GET http://localhost:8080/springMVC5/static.jsp
+

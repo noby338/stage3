@@ -16,18 +16,22 @@ public class MybatisConfiguration {
     //该注解表示Spring会将当前方法的返回值以指定名称存储到Spring容器中
     //该注解通常用来配置非自定义类
     @Bean
+    public SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource) {
+        /*
+        这里的dataSource参数为Spring自动注入(来自SpringConfiguration配置类)
+         */
+        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
+        sqlSessionFactoryBean.setDataSource(dataSource);
+        sqlSessionFactoryBean.setTypeAliasesPackage("priv.noby.note.entity");
+        return sqlSessionFactoryBean;
+    }
+
+    @Bean
     public MapperScannerConfigurer mapperScannerConfigurer() {
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
         mapperScannerConfigurer.setBasePackage("priv.noby.note.dao");
         return mapperScannerConfigurer;
     }
 
-    @Bean
-    public SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource) {
-        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
-        sqlSessionFactoryBean.setDataSource(dataSource);
-        sqlSessionFactoryBean.setTypeAliasesPackage("priv.noby.note.entity");
-        return sqlSessionFactoryBean;
-    }
 
 }

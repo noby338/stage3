@@ -1,0 +1,64 @@
+### springMVC 请求 基本类型参数
+GET http://localhost:8080/springMVC5/student/select?name=诺比&age=20
+
+### springMVC 请求 entity数据类型的封装
+GET http://localhost:8080/springMVC5/student/select2?name=诺比&age=20
+
+### springMVC 请求 集合数据类型借助VO类的封装
+GET http://localhost:8080/springMVC5/student/select4?studentList[0].name=诺比&studentList[0].age=21&studentList[1].name=凯斯&studentList[1].age=22
+
+### springMVC 请求 集合数据类型借助VO类的封装，post请求键值对参数乱码测试
+POST http://localhost:8080/springMVC5/student/select4
+Content-Type: application/x-www-form-urlencoded
+
+studentList[0].name=诺比&studentList[0].age=21&studentList[1].name=凯斯&studentList[1].age=22
+
+### springMVC 请求 集合数据类型使用@RequestBody
+POST http://localhost:8080/springMVC5/student/select5
+Content-Type: application/json
+
+[
+  {
+    "name": "诺比",
+    "age": 21
+  },
+  {
+    "name": "凯斯",
+    "age": 22
+  }
+]
+
+### springMVC 请求 基本类型参数，使用@RequestParam完成参数映射
+GET http://localhost:8080/springMVC5/student/select6?username=诺比&userAge=30
+
+### springMVC 请求 基本类型参数，通过@PathVariable注解使用Restful风格请求
+GET http://localhost:8080/springMVC5/student/select7/1
+
+### springMVC 请求 自定义类型转换器(自定义类、配置文件声明、配置文件引用三个步骤)
+GET http://localhost:8080/springMVC5/student/select8?date=2022-10-14
+
+### springMVC 请求 通过@RequestHeader获取指定的请求头
+GET http://localhost:8080/springMVC5/student/select9
+
+### springMVC 请求 通过@CookieValue()获取指定的Cookie
+GET http://localhost:8080/springMVC5/student/select10
+
+### springMVC 请求 上传文件(该请求和本项目upload.jsp中的请求一样)
+POST http://localhost:8080/springMVC5/student/select11
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+#一个WebAppBoundary包含内的即代表一个form中的input标签
+--WebAppBoundary
+#这里的name中的值必须和controller中的方法参数名一致才能传入
+Content-Disposition: form-data; name="fileName"
+Content-Type: text/plain
+
+#下一行的字符串即为本input的key fileName的value 一个表单输入的name
+一个表单输入的name
+--WebAppBoundary
+Content-Disposition: form-data; name="uploadFile"; filename="984271.jpg"
+
+< D:/media/image/精选/984271.jpg
+--WebAppBoundary--
+
+

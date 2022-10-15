@@ -1,0 +1,10 @@
+### 测试类转换异常捕获
+GET http://localhost:8080/springMVC7/student/selectById
+
+### 测试数学异常(跳转到默认异常页面)捕获
+GET http://localhost:8080/springMVC7/student/selectById2
+
+### 测试自定义异常捕获
+GET http://localhost:8080/springMVC7/student/selectById3
+
+

@@ -1,16 +1,3 @@
-<!--<?xml version="1.0" encoding="UTF-8"?>-->
-<!--&lt;!&ndash;命名空间(约束头)及地址(使用某些标签必须先导入该标签的命名空间及地址)&ndash;&gt;-->
-<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
-<!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
-<!--       xmlns:p="http://www.springframework.org/schema/p"-->
-<!--       xsi:schemaLocation="-->
-<!--       http://www.springframework.org/schema/beans-->
-<!--       http://www.springframework.org/schema/beans/spring-beans.xsd">-->
-
-
-<!--</beans>-->
-
-
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"

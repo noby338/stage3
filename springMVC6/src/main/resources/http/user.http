@@ -1,0 +1,7 @@
+### 登录
+GET http://localhost:8080/springMVC6/user/login?username=noby&password=123
+
+### 退出登录
+GET http://localhost:8080/springMVC6/user/logout
+
+

@@ -28,7 +28,7 @@ public class SpringConfiguration {
     @Value("${jdbc.password}")
     private String password;
 
-    //该注解表示Spring会将当前方法的返回值以指定名称存储到Spring容器中
+    //该注解表示Spring会将当前方法的返回值以Type方式(方法上的返回类型)存储到Spring容器中
     //该注解通常用来配置非自定义类
     @Bean
     public DataSource dataSource(){

@@ -19,9 +19,8 @@ springMVC
             * http://www.springframework.org/schema/mvc
               http://www.springframework.org/schema/mvc/spring-mvc.xsd
           * <mvc:default-servlet-handler/>
-  * spring 配置文件中 Ctroller 的 bean
+  * spring 配置文件中 Controller 的 bean
 * springMVC 的结构及执行流程
-  * ![img.png](img.png)
   * DispatcherServlet 中央调度器，前端控制器 
     * 就是SpringMVC封装的Servlet(Service),我们二阶段有个BaseServlet
   * HandlerMapping 处理器映射器

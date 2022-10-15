@@ -10,12 +10,11 @@ import priv.noby.note.service.AccountService;
 @Service
 public class AccountServiceImpl implements AccountService {
     @Autowired
-    AccountDao accountDao = null;
+    AccountDao accountDao;
 
 //    @Transactional//织入事务管理
     @Transactional(rollbackFor = Exception.class)//设置回滚的异常（默认为runtimeException）
     @Override
-
     public void transfer(String send, String receive, int money) {
         Account sendAcc = accountDao.selectByName(send);
         Account receiveAcc = accountDao.selectByName(receive);
