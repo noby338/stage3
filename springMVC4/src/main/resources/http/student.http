@@ -1,0 +1,26 @@
+### springMVC 响应 页面跳转，直接返回字符串
+GET http://localhost:8080/springMVC4/student/selectById
+
+### springMVC 响应 页面跳转，通过ModelAndView对象返回，ModelAndView对象为方法内部实例化
+GET http://localhost:8080/springMVC4/student/selectById2
+
+### springMVC 响应 页面跳转，通过ModelAndView对象返回，ModelAndView对象为方法参数封装
+GET http://localhost:8080/springMVC4/student/selectById21
+
+### springMVC 响应 页面跳转，通过ModelAndView对象返回，Model对象和返回字符串表示视图组合
+GET http://localhost:8080/springMVC4/student/selectById22
+
+### springMVC 响应 页面跳转，通过ModelAndView对象返回，HttpServletRequest对象和返回字符串表示视图组合
+GET http://localhost:8080/springMVC4/student/selectById23
+
+### springMVC 响应 回写数据，直接返回字符串,利用@ResonseBody注解
+GET http://localhost:8080/springMVC4/student/selectById3
+
+### springMVC 响应 回写数据，直接返回字符串,利用HttpServletResponse对象
+GET http://localhost:8080/springMVC4/student/selectById31
+
+### springMVC 响应 回写数据，直接返回字符串,使用@ResponseBody注解利用第三方工具返回自定义json格式字符串
+GET http://localhost:8080/springMVC4/student/selectById32
+
+### springMVC 响应 回写数据，返回对象或集合，配置文件配置处理器映射器(有普通配置和mvc注解驱动两种方式)，处理器映射器可直接将将要返回的对象转换为json
+GET http://localhost:8080/springMVC4/student/selectById4
