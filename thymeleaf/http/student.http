@@ -1,0 +1,8 @@
+### 进入静态资源(配置请求路径的转换后进入动态资源)
+GET http://localhost:8080/a.html
+
+### 进入模板引擎动态资源
+GET http://localhost:8080/student/selectById?id=1
+
+### thymeleaf的使用
+GET http://localhost:8080/student/thymeleaf

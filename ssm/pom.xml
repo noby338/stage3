@@ -72,10 +72,21 @@
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
+        <!--json和java对象之间的转换工具-->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.62</version>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.11.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.11.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.11.4</version>
         </dependency>
 
 
@@ -115,7 +126,7 @@
                 <configuration>
                     <port>8080</port>
                     <!--设置服务器的虚拟目录-->
-                    <path>/spring-servlet</path>
+                    <path>/ssm</path>
                     <!--设置 get 请求的编码方式-->
                     <uriEncoding>utf-8</uriEncoding>
                 </configuration>

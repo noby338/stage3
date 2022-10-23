@@ -1,0 +1,4 @@
+# 默认的转换器时间格式date=2022/10/12
+### 类型转换器的使用
+GET http://localhost:8080/emp/selectById?date=2022-10-12
+

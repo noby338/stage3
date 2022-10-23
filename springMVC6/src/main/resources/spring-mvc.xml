@@ -29,13 +29,13 @@
         </mvc:interceptor>
 
         <!--登录验证拦截器-->
-        <mvc:interceptor>
-            <mvc:mapping path="/**"/>
-            <!--不经过拦截器直接放行的资源-->
-            <!--不需要配置jsp的拦截，拦截器默认jsp放行-->
-            <mvc:exclude-mapping path="/user/login"/>
-            <bean class="priv.noby.note.interceptor.PrivilegeInterceptor"/>
-        </mvc:interceptor>
+<!--        <mvc:interceptor>-->
+<!--            <mvc:mapping path="/**"/>-->
+<!--            &lt;!&ndash;不经过拦截器直接放行的资源&ndash;&gt;-->
+<!--            &lt;!&ndash;不需要配置jsp的拦截，拦截器默认jsp放行&ndash;&gt;-->
+<!--            <mvc:exclude-mapping path="/user/login"/>-->
+<!--            <bean class="priv.noby.note.interceptor.PrivilegeInterceptor"/>-->
+<!--        </mvc:interceptor>-->
     </mvc:interceptors>
 
 </beans>

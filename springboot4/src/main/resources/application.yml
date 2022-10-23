@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: springboot4
+  mvc:
+    # 转换器的配置
+    format:
+      date: yyyy-MM-dd
+server:
+  port: 8080
+# 配置日志的级别
+# root 为输出包括系统日志在内的所有日志信息
+# 可配置指定路径输出日志
+logging:
+  level:
+    #    root: info
+    priv.noby.note.springboot4: error
+# 自定义的文件虚拟路径配置，服务器请求的路径将映射到本地磁盘，这样打包项目就不再需要同图片一同打包了
+upload:
+  resourceHandler: /image/**
+  resourceHandLocations: D:/media/image/精选/

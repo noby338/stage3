@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+# 数据的引用
+studentname: noby
+# 对象
+student:
+  name: ${studentname} # 引用的上面的值
+  age: 20
+# 数组
+addresses:
+  - beijing
+  - shanghai
+# 纯量(常量)
+msg1: 'hello \n world' # 单引忽略转义字符
+msg2: "hello \n world" # 双引识别转义字符
+
+#自定义常量(测试共享数据)
+constant:
+  information: 自定义共享数据

@@ -8,6 +8,9 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!--SpringMVC注解驱动，使用注解方式开发，很多底层功能都是靠他实现的：创建一写支持注解开发的核心类-->
+    <!--使用<mvc:annotation-driven>自动加载 RequestMappingHandlerMapping（处理映射器）和
+    RequestMappingHandlerAdapter（处理适配器），可替代注解处理器和适配器的配置。
+    同时使用<mvc:annotation-driven>默认底层就会集成jackson进行对象或集合的json格式字符串的转换。-->
     <!--conversion-service="conversionService 为配置转换器-->
     <mvc:annotation-driven conversion-service="conversionService"/>
     <!--未找到某静态资源时使用默认的web容器代替中央调度器-->

@@ -30,11 +30,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-        <!--thymeleaf 模板引擎，用于访问动态资源目录-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
         <!--mybatis 的场景启动器-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -51,11 +46,6 @@
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>1.1.16</version>
         </dependency>
-
-
-
-
-
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -100,7 +90,7 @@
 <!--                <version>2.3.7.RELEASE</version>-->
                                 <version>2.3.12.RELEASE</version>
                 <configuration>
-                    <mainClass>priv.noby.springboot.SpringbootApplication</mainClass>
+                    <mainClass>priv.noby.springboot2.Springboot2Application</mainClass>
                 </configuration>
                 <executions>
                     <execution>

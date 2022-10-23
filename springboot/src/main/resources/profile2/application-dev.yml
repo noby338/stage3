@@ -1,0 +1,3 @@
+server:
+  port: 8081
+info: 多文件profile配置方式，dev环境

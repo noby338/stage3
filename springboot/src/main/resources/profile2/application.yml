@@ -1,0 +1,8 @@
+# 指定使用的配置环境
+# 配置文件激活方式
+spring:
+  profiles:
+    active: dev
+
+
+

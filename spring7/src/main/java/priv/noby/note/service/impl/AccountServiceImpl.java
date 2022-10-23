@@ -2,18 +2,18 @@ package priv.noby.note.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import priv.noby.note.dao.AccountDao;
 import priv.noby.note.entity.Account;
 import priv.noby.note.service.AccountService;
 
+/**
+ * 通过配置文件配置事务
+ */
 @Service
 public class AccountServiceImpl implements AccountService {
     @Autowired
     AccountDao accountDao;
 
-//    @Transactional//织入事务管理
-    @Transactional(rollbackFor = Exception.class)//设置回滚的异常（默认为runtimeException）
     @Override
     public void transfer(String send, String receive, int money) {
         Account sendAcc = accountDao.selectByName(send);
@@ -24,9 +24,8 @@ public class AccountServiceImpl implements AccountService {
             } else if (sendAcc.getMoney() >= money) {
                 sendAcc.setMoney(sendAcc.getMoney() - money);
                 accountDao.update(sendAcc);
-                if (true) {
-                    throw new RuntimeException("事务异常");
-                }
+                //模拟事务出现异常，查看是否回滚
+                int i = 1 / 0;
                 receiveAcc.setMoney(receiveAcc.getMoney() + money);
                 accountDao.update(receiveAcc);
                 System.out.println("转账成功");

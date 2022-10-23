@@ -8,13 +8,15 @@ springboot2 2022/6/14
     * 配置实体类包扫描
     * 配置映射文件路径
     * 配置数据库连接
-  * 启动类上加 @MapperScan("priv.noby.springboot.dao") 配置 dao 实体类包扫描 
+  * 启动类上加 @MapperScan("priv.noby.springboot2.dao") 配置 dao 实体类包扫描 
   * 事务管理
     * 启动类配置 @EnableTransactionManagement
     * 事务类配置 @Transactional
   * 配置第三方数据源
     * pom 坐标设置
     * 配置文件配置连接参数
-  * 通过实现 InitializingBean 接口的第三方类实现 springboot 中的数据共享
-  * 数据共享类
+* 热部署的配置
+  * 导入pom坐标
+  * 开启自动编译
+  
     

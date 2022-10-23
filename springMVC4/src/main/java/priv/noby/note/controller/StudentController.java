@@ -19,14 +19,21 @@ import java.io.IOException;
  * 1） 页面跳转
  *  直接返回字符串
  *  通过ModelAndView对象返回
- * 2） 回写数据
+ * 2） 回写数据 (当只回写数据是类上可以使用@RestController代替@Controller注解)
  *  直接返回字符串
  *  返回对象或集合
  * @author Noby
  * @since 2022/10/11
  */
+/*@RestController注解等价于@ResponseBody ＋ @Controller。
+@RestController和@Controller的共同点是都用来表示Spring某个类是否可以接收HTTP请求，
+二者区别： @RestController无法返回指定页面，而@Controller可以；
+前者可以直接返回数据，后者需要@ResponseBody辅助。
+ */
 @Controller
-@RequestMapping("/student")
+//@RequestMapping("/student")
+//可设置响应的编码格式 produces = "application/json;charset=utf-8"
+@RequestMapping(value="/student",produces = "application/json;charset=utf-8")
 public class StudentController {
 
     /**

@@ -1,0 +1,14 @@
+### 页面初始化
+GET http://localhost:8080/mavenssm-controller/emp/init.do
+
+### 测试是否乱码get
+GET http://localhost:8080/ssm/emp/getCoding?mes=中文
+
+### 测试是否乱码post
+POST http://localhost:8080/ssm/emp/postCoding
+Content-Type: application/json
+
+{
+  "mes": "中文"
+}
+

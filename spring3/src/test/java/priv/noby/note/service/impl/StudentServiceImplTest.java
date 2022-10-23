@@ -32,5 +32,4 @@ public class StudentServiceImplTest {
         boolean b = studentService.insert(student);
         System.out.println(b);
     }
-
 }

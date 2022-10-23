@@ -1,0 +1,14 @@
+### 测试springboot启动
+GET http://localhost:8080/student/selectById?id=1
+
+### 获取yml中的自定义数据，方式1
+GET http://localhost:8080/student/getYmlValue
+
+### 获取yml中的自定义数据，方式2
+GET http://localhost:8080/student/getYmlValue2
+
+### 获取yml中的自定义数据，方式3
+GET http://localhost:8080/student/getYmlValue3
+
+### 获取yml中的自定义数据，方式4
+GET http://localhost:8080/student/getYmlValue4

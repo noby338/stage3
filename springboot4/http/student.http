@@ -1,0 +1,11 @@
+### 登录成功后执行操作(未登录将会被拦截器拦截)
+GET http://localhost:8080/student/doSomethingAfterLogin
+
+### 登录
+POST http://localhost:8080/student/login
+Content-Type: application/json
+
+{
+  "name": "noby",
+  "password": "123"
+}

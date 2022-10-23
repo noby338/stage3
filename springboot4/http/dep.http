@@ -1,0 +1,18 @@
+### springboot 请求 上传文件
+POST http://localhost:8080/dep/selectById
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+#一个WebAppBoundary包含内的即代表一个form中的input标签
+
+--WebAppBoundary
+Content-Disposition: form-data; name="uploadFile"; filename="aa.jpg"
+
+< D:/media/image/aa.jpg
+--WebAppBoundary--
+
+
+### springboot 虚拟路径配置的测试(获取的本地磁盘的D:/media/image/精选/目录)
+GET http://localhost:8080/image/984271.jpg
+
+
+
