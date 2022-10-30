@@ -1,40 +1,81 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="priv.noby.springsecurity.dao.EmpDao">
-    <insert id="insert">
-        insert into emp(ename,did,hiredate)  values(#{ename},#{dep.did},#{hiredate})
-    </insert>
-    <update id="updateByEmp">
-        update emp set ename=#{ename},hiredate=#{hiredate},did=#{dep.did} where eid=#{eid}
-    </update>
-    <delete id="deleteByEid">
-        delete from emp where eid=#{eid}
-    </delete>
-    <select id="selectAll" resultMap="emp_dep_map">
-        select * from emp
+
+    <resultMap type="priv.noby.springsecurity.entity.Emp" id="EmpMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="did" column="did" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="EmpMap">
+        select
+          id, name, did
+        from emp
+        where id = #{id}
     </select>
-    <select id="selectByEmp" resultMap="emp_dep_map">
-        select * from emp
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="EmpMap">
+        select
+          id, name, did
+        from emp
         <where>
-            <if test="eid != null and eid !=''">
-                and eid = #{eid}
+            <if test="emp.id != null">
+                and id = #{emp.id}
             </if>
-            <if test="ename != null and ename !=''">
-                and ename like '%' #{ename} '%'
+            <if test="emp.name != null and emp.name != ''">
+                and name = #{emp.name}
             </if>
-            <if test="dep.did != null and dep.did !=''">
-                and did = #{dep.did}
-           </if>
+            <if test="emp.did != null">
+                and did = #{emp.did}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from emp
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="did != null">
+                and did = #{did}
+            </if>
         </where>
     </select>
-    <resultMap id="emp_dep_map" type="emp">
-        <id column="eid" property="eid"/>
-        <result column="ename" property="ename"/>
-        <association column="did" property="dep" javaType="Dep" select="selectDepByDid"/>
-    </resultMap>
-    <select id="selectDepByDid" resultType="Dep">
-        select * from dep where did=#{did}
-    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into emp(name, did)
+        values (#{name}, #{did})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update emp
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="did != null">
+                did = #{did},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from emp where id = #{id}
+    </delete>
+
 </mapper>
+

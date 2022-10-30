@@ -15,9 +15,9 @@ import java.util.Date;
 public class JwtUtil {
 
     //密钥
-    private static final String SECRET = "noby";
+    private static final String SECRET = "123";
     //签发者
-    private static final String ISSUSER = "java";
+    private static final String ISSUSER = "noby";
     //过期时间 30分钟
     private static final long EXPIRES = 30*60*1000;
 
@@ -66,7 +66,6 @@ public class JwtUtil {
         }
     }
 
-
     //判断是否超时
     public static boolean isExpires(String token) {
         Date now = new Date();
@@ -74,11 +73,4 @@ public class JwtUtil {
         return now.after(expire);
     }
 
-//    public static void main(String[] args) {
-//        String token =JwtUtil.create("kace");
-//        System.out.println(token);
-//        System.out.println(JwtUtil.verify(token));
-//        System.out.println(JwtUtil.isExpires(token));
-//        System.out.println(JwtUtil.getUsername(token));
-//    }
 }

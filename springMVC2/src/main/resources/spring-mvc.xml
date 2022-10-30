@@ -16,10 +16,10 @@
     <!--未找到某静态资源时使用默认的web容器代替中央调度器-->
     <mvc:default-servlet-handler/>
     <!--包扫描，扫描controller包下的注解-->
-    <context:component-scan base-package="priv.noby.note.controller"/>
+    <context:component-scan base-package="priv.noby.springmvc2.controller"/>
 
     <!--region 配置该转换器后，属于日期的参数均会调用该日期转换器-->
-    <bean id="dateConverter" class="priv.noby.note.converter.DateConverter"/>
+    <bean id="dateConverter" class="priv.noby.springmvc2.converter.DateConverter"/>
     <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
         <!--配置转换器-->
         <property name="converters">
@@ -39,7 +39,7 @@
         <mvc:interceptor>
             <!--配置路径，/**表示所有-->
             <mvc:mapping path="/interceptor/**"/>
-            <bean class="priv.noby.note.interceptor.MyInterceptor"/>
+            <bean class="priv.noby.springmvc2.interceptor.MyInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
     <!--endregion-->

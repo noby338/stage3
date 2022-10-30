@@ -1,26 +1,15 @@
 springsecurity 2022/7/1
 
 * springsecurity 的使用
-  * public class LoginUserDetail implements UserDetails
-    * 根据前端的用户名预存储该用户正确的账号和密码的信息(信息来自数据库，用于验证)
-  * public class UserDetailServiceImpl implements UserDetailsService
-    * 根据接收的用户名，在数据库中查询对应的账号信息，并封装为 LoginUserDetail 返回
-  * public class UserController
-    * 根据前端传递的 user 调用 LoginService 
-    * UserController 的使用必须重写框架底层原有的默认 Controller，配置配置类
-      * protected void configure(HttpSecurity http)
-  * public class LoginServiceImpl implements LoginService
-    * 根据框架的 AuthenticationManager 验证前端的 user 数据是否和数据库中的一致(前端的 user 数据是否和 LoginUserDetail 一致)
-  * public class SpringSecurityConfig extends WebSecurityConfigurerAdapter
-    * springsecurity 的配置类
-      * 启用密码加密
-      * 配置认证管理器，供 LoginServiceImpl 账户认证使用
-      * 配置过滤拦截，配置后，自己的 login 将代替框架的 login
-  * 启用授权
-    * 配置类注解 @EnableGlobalMethodSecurity(prePostEnabled = true)
-    * 方法权限方法注解 @PreAuthorize("hasAnyAuthority('t')")
-    * 权限表的设计
-      * ![img.png](img.png)
+  * 认证![img.png](img_1.png)
+    * UserDetailService接口：需在配置类配置密码转换
+      * loadUserByUsername()方法，可根据用户名在数据库获取用户完整信息，并封装为UserDetails接口的实现类对象UserDetail
+    * AuthenticationManager对象：需在配置类注入该对象
+      * authenticate()方法，该方法中传入controller中传入的username和password封装的Authentication和UserDetail对象对比，即可认证controller中的用户名和密码和数据库中的用户名和密码是否一致
+        * 若认证失败框架抛出异常
+        * 若认证成功根据用户名生成token，并将token响应给前端，将Authentication封装到springsecurity上下文对象中
+    * OncePerRequestFilter接口：需在配置类配置在最前面执行该过滤器
+      * doFilterInternal()方法，认证后用户用户携带token访问其他controller前会进入该filer，该filter中根据缓存中是否存在该token对应的用户正确信息而在springSecurity上下文中存放用户信息封装的Authenticaiton，该对象的存在可以使得该请求是否具有访问其他controller的权限
+    * LoginController：/login 访问路径默认为框架的默认controller，需在配置类配置指定自己的controller
 
-* unauthorized 登录失败 401
-* forbidden 没有权限 403
+

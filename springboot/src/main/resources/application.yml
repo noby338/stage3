@@ -26,7 +26,7 @@ spring:
 # Program arguments 配置方式，命令行配置优先级高于配置文件激活方式
 # --spring.profiles.active=pro
 
-# 启动参数别名的配置，使用了该别名后，VM options 配置方式中参数可以使用-Dactive=dev代替-Dspring.profiles.active=dev
+# 启动参数别名的配置，使用了该别名后，VM options 配置方式中参数可以使用-Dactive=dev代替-Dspring.profiles.active=dev，且在未输入虚拟机参数时的默认值为dev
 #spring:
 #  profiles:
 #    active: ${active:dev}

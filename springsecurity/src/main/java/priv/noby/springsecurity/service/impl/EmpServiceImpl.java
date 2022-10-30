@@ -1,45 +1,82 @@
 package priv.noby.springsecurity.service.impl;
 
-import com.github.pagehelper.PageHelper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import priv.noby.springsecurity.dao.EmpDao;
 import priv.noby.springsecurity.entity.Emp;
+import priv.noby.springsecurity.dao.EmpDao;
 import priv.noby.springsecurity.service.EmpService;
+import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 
-import java.util.List;
+import javax.annotation.Resource;
 
-@Service
+/**
+ * (Emp)表服务实现类
+ *
+ * @author Noby
+ * @since 2022-10-30 14:17:42
+ */
+@Service("empService")
 public class EmpServiceImpl implements EmpService {
-    @Autowired
-    EmpDao empDao;
+    @Resource
+    private EmpDao empDao;
 
+    /**
+     * 通过ID查询单条数据
+     *
+     * @param id 主键
+     * @return 实例对象
+     */
     @Override
-    public List<Emp> selectAll(int pageNum) {
-        PageHelper.startPage(pageNum, 6);
-        List<Emp> emps = empDao.selectAll();
-        return emps;
+    public Emp queryById(Integer id) {
+        return this.empDao.queryById(id);
     }
 
+    /**
+     * 分页查询
+     *
+     * @param emp 筛选条件
+     * @param pageRequest      分页对象
+     * @return 查询结果
+     */
     @Override
-    public List<Emp> selectByEmp(int pageNum,Emp emp) {
-        PageHelper.startPage(pageNum, 6);
-        List<Emp> emps = empDao.selectByEmp(emp);
-        return emps;
+    public Page<Emp> queryByPage(Emp emp, PageRequest pageRequest) {
+        long total = this.empDao.count(emp);
+        return new PageImpl<>(this.empDao.queryAllByLimit(emp, pageRequest), pageRequest, total);
     }
 
+    /**
+     * 新增数据
+     *
+     * @param emp 实例对象
+     * @return 实例对象
+     */
     @Override
-    public boolean deleteByEid(int eid) {
-        return empDao.deleteByEid(eid);
+    public Emp insert(Emp emp) {
+        this.empDao.insert(emp);
+        return emp;
     }
 
+    /**
+     * 修改数据
+     *
+     * @param emp 实例对象
+     * @return 实例对象
+     */
     @Override
-    public boolean updateByEmp(Emp emp) {
-        return empDao.updateByEmp(emp);
+    public Emp update(Emp emp) {
+        this.empDao.update(emp);
+        return this.queryById(emp.getId());
     }
 
+    /**
+     * 通过主键删除数据
+     *
+     * @param id 主键
+     * @return 是否成功
+     */
     @Override
-    public boolean insert(Emp emp) {
-        return empDao.insert(emp);
+    public boolean deleteById(Integer id) {
+        return this.empDao.deleteById(id) > 0;
     }
 }

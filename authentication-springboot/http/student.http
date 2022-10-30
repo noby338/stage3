@@ -1,0 +1,8 @@
+### 前端项目authentication-vue
+GET http://localhost:8080/student/selectById/1
+
+### session登录认证操作是否成功
+GET http://localhost:8080/student/afterSessionLogin
+
+### Jwt登录认证操作是否成功
+GET http://localhost:8080/student/afterJwtLogin

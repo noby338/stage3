@@ -11,11 +11,11 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 ">
 
-    <context:component-scan base-package="priv.noby.note.service"/>
+    <context:component-scan base-package="priv.noby.spring7.service"/>
     <context:property-placeholder location="db.properties" system-properties-mode="NEVER"/>
     <!--配置 SqlSessionFactoryBean，创建 SqlSession 对象 (来自 Spring mybatis 的整合包)-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="typeAliasesPackage" value="priv.noby.note.entity"/>
+        <property name="typeAliasesPackage" value="priv.noby.spring7.entity"/>
         <property name="dataSource" ref="dataSource"/>
     </bean>
     <!--配置数据源-->
@@ -27,7 +27,7 @@
     </bean>
     <!--MapperScannerConfigurer，用于扫描 Dao 和创建 sqlSession-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="priv.noby.note.dao"/>
+        <property name="basePackage" value="priv.noby.spring7.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
@@ -58,7 +58,7 @@
     <aop:config>
         <!--advice-ref="txAdvice"表示引用事务的通知，pointcut表示切入点(哪一个方法使用事务)-->
         <aop:advisor advice-ref="txAdvice" pointcut="execution(* priv.noby.note.service.impl.*.*(..))"/>
-<!--        <aop:pointcut id="txPointcut" expression="execution(* priv.noby.note.service.impl.AccountServiceImpl.transfer(..))"/>-->
+<!--        <aop:pointcut id="txPointcut" expression="execution(* AccountServiceImpl.transfer(..))"/>-->
 <!--        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>-->
     </aop:config>
 </beans>

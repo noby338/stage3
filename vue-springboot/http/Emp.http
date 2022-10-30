@@ -2,7 +2,7 @@
 GET http://localhost:8080/selectEmp?pageNum=1&eid=3
 
 ###
-POST http://localhost:8082/selectEmp/1
+POST http://localhost:8080/selectEmp/1
 Content-Type: application/json
 x-requested-with: XMLHttpRequest
 
@@ -13,7 +13,7 @@ x-requested-with: XMLHttpRequest
 }
 
 ###
-DELETE http://localhost:8082/deleteEmpByEid/20000
+DELETE http://localhost:8080/deleteEmpByEid/20000
 Content-Type: application/json
 x-requested-with: XMLHttpRequest
 

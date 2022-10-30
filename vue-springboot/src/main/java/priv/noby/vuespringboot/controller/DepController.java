@@ -1,7 +1,6 @@
 package priv.noby.vuespringboot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import priv.noby.vuespringboot.entity.Dep;
@@ -19,6 +18,7 @@ public class DepController {
     @RequestMapping("/selectAllDep")
     public ResponseResult<List<Dep>> selectAllDep() {
         List<Dep> deps = depService.selectAll();
+        System.out.println("deps = " + deps);
         return new ResponseResult<>(200,"y",deps);
     }
 }

@@ -1,0 +1,64 @@
+### 登录noby，administrator拥有所有权限
+POST http://localhost:8080/user/login
+Content-Type: application/json
+
+{
+  "username": "noby",
+  "password": "123"
+}
+
+### 登录kace，user拥有dep
+POST http://localhost:8080/user/login
+Content-Type: application/json
+
+{
+  "username": "kace",
+  "password": "123"
+}
+
+### 登录july，guste拥有emp
+POST http://localhost:8080/user/login
+Content-Type: application/json
+
+{
+  "username": "july",
+  "password": "123"
+}
+
+
+
+
+### springsecurity的默认登录页面
+GET http://localhost:8080/login
+
+### springsecurity的默认注销页面
+GET http://localhost:8080/logout
+
+### 通过配置类覆盖后的自定义登录
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+  "username": "a",
+  "password": "aaa"
+}
+
+### 通过配置类覆盖后的自定义登录user
+POST http://localhost:8080/user/login
+Content-Type: application/json
+
+{
+  "username": "kace",
+  "password": "123"
+}
+
+### 通过配置类覆盖后的自定义登录user
+POST http://localhost:8080/login
+Content-Type: application/json
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqYXZhIiwiZXhwIjoxNjY3MDUxNzgwLCJpYXQiOjE2NjcwNDk5ODAsInVzZXJuYW1lIjoiYSJ9.Qp424baC8G9BSMVnabtCTcsgwv6cHj2IxzsfxYiqOUE
+
+{
+  "username": "kace",
+  "password": "123"
+}
+

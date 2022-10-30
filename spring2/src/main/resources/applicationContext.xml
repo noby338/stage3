@@ -11,7 +11,7 @@
     priv.noby.note.service 扫描当前包及其子包
     priv.noby.note.service.*扫描当前包的子包
     -->
-    <context:component-scan base-package="priv.noby.note.entity"/>
+    <context:component-scan base-package="priv.noby.spring2.entity"/>
 
     <!--引入properties配置文件到spring容器中-->
     <context:property-placeholder location="classpath:db.properties"/>

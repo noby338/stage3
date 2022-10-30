@@ -13,5 +13,5 @@
     同时使用<mvc:annotation-driven>默认底层就会集成jackson进行对象或集合的json格式字符串的转换。-->
     <mvc:annotation-driven/>
     <mvc:default-servlet-handler/>
-    <context:component-scan base-package="priv.noby.note.controller"/>
+    <context:component-scan base-package="priv.noby.mavenssm.controller"/>
 </beans>

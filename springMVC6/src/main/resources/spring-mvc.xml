@@ -10,7 +10,7 @@
 ">
 
     <!--Controller的组件扫描(用于使用@controller和RequestMapping注解)-->
-    <context:component-scan base-package="priv.noby.note.controller"/>
+    <context:component-scan base-package="priv.noby.springmvc6.controller"/>
 
     <!--mvc的注解驱动-->
     <!--使用<mvc:annotation-driven>自动加载 RequestMappingHandlerMapping（处理映射器）和
@@ -25,7 +25,7 @@
         <mvc:interceptor>
             <!--mapping表示拦截的资源，path="/**"表示拦截所有资源-->
             <mvc:mapping path="/**"/>
-            <bean class="priv.noby.note.interceptor.MyHandlerInterceptor"/>
+            <bean class="priv.noby.springmvc6.interceptor.MyHandlerInterceptor"/>
         </mvc:interceptor>
 
         <!--登录验证拦截器-->
@@ -34,7 +34,7 @@
 <!--            &lt;!&ndash;不经过拦截器直接放行的资源&ndash;&gt;-->
 <!--            &lt;!&ndash;不需要配置jsp的拦截，拦截器默认jsp放行&ndash;&gt;-->
 <!--            <mvc:exclude-mapping path="/user/login"/>-->
-<!--            <bean class="priv.noby.note.interceptor.PrivilegeInterceptor"/>-->
+<!--            <bean class="PrivilegeInterceptor"/>-->
 <!--        </mvc:interceptor>-->
     </mvc:interceptors>
 

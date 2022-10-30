@@ -1,0 +1,24 @@
+#前后端分离项目中，因为请求的流程是浏览器=>前端=>后端，而前端的ajax异步请求默认不携带cookie以及cookie中的
+#jsessionid，所以即使是同一浏览器发过来的请求，每次后端获得的session都为新的session，所以需要在设置ajax
+#携带凭证，保证后端获得统一session(前端设置 axios.defaults.withCredentials=true，同时后端的配置类必
+#须设置允许来自该前端的跨域和允许携带该cookie)
+### 测试获得的sessionId是否相同
+GET http://localhost:8080/user/showSessionId
+
+### 通过session进行登录认证
+POST http://localhost:8080/user/sessionLogin
+Content-Type: application/json
+
+{
+  "username": "noby",
+  "password": "123"
+}
+
+### 通过Jwt进行登录认证
+POST http://localhost:8080/user/jwtLogin
+Content-Type: application/json
+
+{
+  "username": "noby",
+  "password": "123"
+}

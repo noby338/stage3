@@ -1,2 +1,2 @@
 ### 测试
-GET http://localhost:8082/selectAllDep
+POST http://localhost:8080/selectAllDep

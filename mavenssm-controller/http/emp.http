@@ -1,0 +1,2 @@
+### 测试是否项目拆分是否成功
+GET http://localhost:8080/mavenssm-controller/emp/init.do

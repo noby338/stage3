@@ -1,0 +1,2 @@
+### 测试全局异常
+GET http://localhost:8080/person/createNullPointer

@@ -9,7 +9,7 @@
         ">
 
     <!--组件扫描-->
-    <context:component-scan base-package="priv.noby.note.aopanno"/>
+    <context:component-scan base-package="priv.noby.spring5.aopanno"/>
 
     <!--aop自动代理-->
     <!--用于识别切面类中有关aop有关的注解-->

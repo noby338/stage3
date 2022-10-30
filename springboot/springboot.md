@@ -14,6 +14,25 @@ springboot 2022/6/13
   * 在spring-boot-starter-parent中定义了各种技术的版本信息，组合了一套最优搭配的技术版本。
   * 在各种starter中，定义了完成该功能需要的坐标合集，其中大部分版本信息来自于父工程。
   * 我们的工程继承parent，引入starter后，通过依赖传递，就可以简单方便获得需要的jar包，并且不会存在版本冲突等问题。
+* 使用SpringBoot的两种方式：
+  * 继承parent：相当于继承自spring-boot-starter-parent
+    `<parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.3.12.RELEASE</version>
+    </parent>`
+  * 使用import标签：这就相当于将spring-boot-dependencies中定义的所有<dependencies>全部复制粘贴到了本项目的pom.xml中
+    `<dependencyManagement>
+    <dependencies>
+    <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-dependencies</artifactId>
+    <version>${spring-boot.version}</version>
+    <type>pom</type>
+    <scope>import</scope>
+    </dependency>
+    </dependencies>
+    </dependencyManagement>`
 * SpringBoot的配置文件：默认配置文件名称为application
   * 分类
     * properties

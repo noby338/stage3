@@ -15,18 +15,18 @@
         <property name="password" value="${jdbc.password}"/>
     </bean>
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="typeAliasesPackage" value="priv.noby.note.entity"/>
+        <property name="typeAliasesPackage" value="priv.noby.spring8.entity"/>
         <property name="dataSource" ref="dataResource"/>
     </bean>
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="priv.noby.note.dao"/>
+        <property name="basePackage" value="priv.noby.spring8.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
-    <bean id="depService" class="priv.noby.note.service.impl.DepServiceImpl">
+    <bean id="depService" class="priv.noby.spring8.service.impl.DepServiceImpl">
         <property name="depDao" ref="depDao"/>
     </bean>
-    <bean id="empService" class="priv.noby.note.service.impl.EmpServiceImpl">
+    <bean id="empService" class="priv.noby.spring8.service.impl.EmpServiceImpl">
         <property name="empDao" ref="empDao"/>
     </bean>
 

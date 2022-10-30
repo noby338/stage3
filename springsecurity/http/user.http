@@ -1,0 +1,25 @@
+### springsecurity的默认登录页面，已不可登录，已配置为自定义login
+GET http://localhost:8080/login
+
+### springsecurity的默认注销页面
+GET http://localhost:8080/logout
+
+### 通过配置类覆盖后的自定义登录login
+POST http://localhost:8080/user/login
+Content-Type: application/json
+
+{
+  "username": "noby",
+  "password": "123"
+}
+
+### 登录不能携带token，否则不能登录
+POST http://localhost:8080/user/login
+Content-Type: application/json
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqYXZhIiwiZXhwIjoxNjY3MDUxNzgwLCJpYXQiOjE2NjcwNDk5ODAsInVzZXJuYW1lIjoiYSJ9.Qp424baC8G9BSMVnabtCTcsgwv6cHj2IxzsfxYiqOUE
+
+{
+  "username": "noby",
+  "password": "123"
+}
+

@@ -13,24 +13,24 @@
 
 <!--    Bean 的作用域-->
     <!--单例模式（默认），每次调用getBean()获得的都是同一个对象-->
-    <bean id="studentSingleton" class="priv.noby.note.entity.Student" scope="singleton"/>
+    <bean id="studentSingleton" class="priv.noby.spring.entity.Student" scope="singleton"/>
     <!--原型模式，每次调用getBean()方法创建一个新的对象-->
-    <bean id="studentPrototype" class="priv.noby.note.entity.Student" scope="prototype"/>
+    <bean id="studentPrototype" class="priv.noby.spring.entity.Student" scope="prototype"/>
 
 <!--    Bean 的创建和销毁-->
     <!--init() 方法在实例化的时候执行，destroy() 在单例模式，且关闭容器时执行-->
-    <bean id="studentInitAndDestroySingleton" class="priv.noby.note.entity.Student" init-method="init" destroy-method="destroy" scope="singleton"/>
-    <bean id="studentInitAndDestroyPrototype" class="priv.noby.note.entity.Student" init-method="init" destroy-method="destroy" scope="prototype"/>
+    <bean id="studentInitAndDestroySingleton" class="priv.noby.spring.entity.Student" init-method="init" destroy-method="destroy" scope="singleton"/>
+    <bean id="studentInitAndDestroyPrototype" class="priv.noby.spring.entity.Student" init-method="init" destroy-method="destroy" scope="prototype"/>
 
 <!--    工厂静态方法实例化-->
-    <bean id="schoolStatic" class="priv.noby.note.factory.StaticFactory" factory-method="getSchool"/>
+    <bean id="schoolStatic" class="priv.noby.spring.factory.StaticFactory" factory-method="getSchool"/>
 <!--    工厂实例方法实例化-->
-    <bean id="schoolDynamicFactory" class="priv.noby.note.factory.DynamicFactory"/>
+    <bean id="schoolDynamicFactory" class="priv.noby.spring.factory.DynamicFactory"/>
     <bean id="schoolDynamic" factory-bean="schoolDynamicFactory" factory-method="getSchool"/>
 
 <!--    依赖注入(设值注入)-->
-    <bean id="studentDao" class="priv.noby.note.dao.impl.StudentDaoImpl"/>
-    <bean id="studentService" class="priv.noby.note.service.impl.StudentServiceImpl">
+    <bean id="studentDao" class="priv.noby.spring.dao.impl.StudentDaoImpl"/>
+    <bean id="studentService" class="priv.noby.spring.service.impl.StudentServiceImpl">
         <!--调用StudentServiceImpl的setStudentDao()方法进行设值注入-->
         <!--name="studentDao"表示的是调用setStudentDao()方法，ref="studentDao"表示引用上面的id-->
         <!--ref为引用数据类型，value为基本数据类型-->
@@ -38,23 +38,23 @@
     </bean>
 
 <!--    p命名空间依赖注入(设值注入)-->
-    <bean id="studentServiceP" class="priv.noby.note.service.impl.StudentServiceImpl" p:studentDao-ref="studentDao"/>
+    <bean id="studentServiceP" class="priv.noby.spring.service.impl.StudentServiceImpl" p:studentDao-ref="studentDao"/>
 
 <!--    依赖注入(构造注入)-->
-    <bean id="studentServiceConstructor" class="priv.noby.note.service.impl.StudentServiceImpl">
+    <bean id="studentServiceConstructor" class="priv.noby.spring.service.impl.StudentServiceImpl">
         <!--调用StudentServiceImpl的构造方法进行构造注入-->
         <!--name="studentDao"表示的是构造方法的形参，ref="studentDao"表示引用上面的id-->
         <constructor-arg name="studentDao" ref="studentDao"/>
     </bean>
 
 <!--    依赖注入引用数据类型的参数名自动注入(设值注入)-->
-    <bean id="studentServiceByName" class="priv.noby.note.service.impl.StudentServiceImpl" autowire="byName">
+    <bean id="studentServiceByName" class="priv.noby.spring.service.impl.StudentServiceImpl" autowire="byName">
         <!--当属性为引用数据类型，且属性名和某标签的id相同时自动注入id到属性中-->
 <!--        <property name="studentDao" ref="studentDao"/>-->
     </bean>
 
 <!--    依赖注入引用数据类型的参数名自动注入(设值注入)-->
-    <bean id="studentServiceByType" class="priv.noby.note.service.impl.StudentServiceImpl" autowire="byType">
+    <bean id="studentServiceByType" class="priv.noby.spring.service.impl.StudentServiceImpl" autowire="byType">
         <!--当属性为引用数据类型，且属性类型和某标签的类型相同时自动注入该标签及其子类型的标签到属性中，注意：当存在属性类型和多个标签的类型相同时会抛出异常-->
 <!--        <property name="studentDao" ref="studentDao"/>-->
     </bean>
@@ -62,7 +62,7 @@
 
 
 <!--    复杂属性的设值注入-->
-    <bean id="some" class="priv.noby.note.entity.Some">
+    <bean id="some" class="priv.noby.spring.entity.Some">
         <!--基本数据类型和字符串的数组-->
         <property name="strArr">
             <array>

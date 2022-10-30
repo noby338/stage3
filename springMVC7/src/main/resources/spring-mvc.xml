@@ -10,7 +10,7 @@
 ">
 
     <!--Controller的组件扫描(用于使用@controller和RequestMapping注解)-->
-    <context:component-scan base-package="priv.noby.note.controller"/>
+    <context:component-scan base-package="priv.noby.springmvc7.controller"/>
 
     <!--mvc的注解驱动-->
     <!--使用<mvc:annotation-driven>自动加载 RequestMappingHandlerMapping（处理映射器）和
@@ -30,12 +30,12 @@
 <!--            <map>-->
 <!--                &lt;!&ndash;出现类转换异常时跳转到/class_cast_error.jsp&ndash;&gt;-->
 <!--                <entry key="java.lang.ClassCastException" value="/class_cast_error.jsp"/>-->
-<!--                <entry key="priv.noby.note.exception.MyException" value="/my_exception_error.jsp"/>-->
+<!--                <entry key="MyException" value="/my_exception_error.jsp"/>-->
 <!--            </map>-->
 <!--        </property>-->
 <!--    </bean>-->
 
     <!--SpringMVC处理异常的第二种方式-->
-    <bean class="priv.noby.note.resolver.MyExceptionResolver"/>
+    <bean class="priv.noby.springmvc7.resolver.MyExceptionResolver"/>
 
 </beans>

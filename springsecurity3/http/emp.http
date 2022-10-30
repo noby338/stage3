@@ -1,0 +1,17 @@
+### kace登录后携带正确token，测试该controller没有未授权(kace只有depControler的权限)，响应自定义授权异常4030
+#smg中的 不予许访问 来自springsecurity底层
+GET http://localhost:8080/emp/1
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqYXZhIiwiZXhwIjoxNjY3MTIyODMzLCJpYXQiOjE2NjcxMjEwMzMsInVzZXJuYW1lIjoia2FjZSJ9.CL01ekqPObJXxgHC-IfUpMIWV-mQNSOkypmoI6wGWSw
+
+### kace登录后携带错误token，测试该controller没有未认证，响应自定义认证异常4010
+#smg中的 不予许访问 来自springsecurity底层
+GET http://localhost:8080/emp/1
+token: MjEwMzMsInVzZX
+
+
+### kace登录后不携带token，测试该controller没有未认证，响应自定义认证异常4010
+GET http://localhost:8080/emp/1
+
+### kace登录后携带正确token，测试该controller全局异常，响应自定义全局异常5000
+GET http://localhost:8080/emp/globalException
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqYXZhIiwiZXhwIjoxNjY3MTIyODMzLCJpYXQiOjE2NjcxMjEwMzMsInVzZXJuYW1lIjoia2FjZSJ9.CL01ekqPObJXxgHC-IfUpMIWV-mQNSOkypmoI6wGWSw

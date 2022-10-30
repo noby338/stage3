@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>priv.noby</groupId>
     <artifactId>maven2</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -16,7 +16,7 @@
     <dependencies>
         <!--可引入自己的坐标（该包必须使用package命令安装）-->
         <dependency>
-            <groupId>priv.noby.note</groupId>
+            <groupId>priv.noby</groupId>
             <artifactId>maven</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>

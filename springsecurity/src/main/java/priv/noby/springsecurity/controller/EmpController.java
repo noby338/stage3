@@ -1,49 +1,98 @@
 package priv.noby.springsecurity.controller;
 
-import com.github.pagehelper.PageInfo;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import priv.noby.springsecurity.entity.Emp;
-import priv.noby.springsecurity.entity.ResponseResult;
 import priv.noby.springsecurity.service.EmpService;
 
-import java.util.List;
+import javax.annotation.Resource;
 
-//允许前端跨域
-//@CrossOrigin
+/**
+ * (Emp)表控制层
+ *
+ * @author Noby
+ * @since 2022-10-30 14:17:42
+ */
 @RestController
+@RequestMapping("emp")
+@Slf4j
 public class EmpController {
-    @Autowired
-    EmpService empService;
+    /**
+     * 服务对象
+     */
+    @Resource
+    private EmpService empService;
 
-    @PostMapping("/selectEmp/{pageNum}")
-    public ResponseResult<PageInfo<Emp>> selectEmp(
-            @PathVariable("pageNum") int pageNum, @RequestBody Emp emp
-    ) {
-        List<Emp> emps = empService.selectByEmp(pageNum, emp);
-        PageInfo<Emp> page = new PageInfo<>(emps);
-        return new ResponseResult<>(200, "y", page);
+    /**
+     * 分页查询
+     *
+     * @param emp 筛选条件
+     * @param page 当前页
+     * @param size 页大小
+     * @return 查询结果
+     */
+//    @PreAuthorize("hasAnyAuthority('emp:select')")
+    @GetMapping("{page}/{size}")
+    public ResponseEntity<Page<Emp>> queryByPage(@RequestBody Emp emp, @PathVariable("page") int page, @PathVariable("size") int size) {
+        log.info("queryByPage ===> emp = {}, page = {}, size = {}", emp, page, size);
+        PageRequest pageRequest = PageRequest.of(page,size);
+        return ResponseEntity.ok(this.empService.queryByPage(emp, pageRequest));
     }
 
-    @DeleteMapping("/deleteEmpByEid/{eid}")
-    public ResponseResult<PageInfo<Emp>> deleteEmpByEid(@PathVariable("eid") int eid) {
-        boolean b = empService.deleteByEid(eid);
-        if (b) {
-            return new ResponseResult<>(200, "y", null);
-        } else {
-            return new ResponseResult<>(500, "n", null);
-        }
+    /**
+     * 通过主键查询单条数据
+     *
+     * @param id 主键
+     * @return 单条数据
+     */
+//    @PreAuthorize("hasAnyAuthority('emp:select')")
+    @GetMapping("{id}")
+    public ResponseEntity<Emp> queryById(@PathVariable("id") Integer id) {
+        log.info("queryById ===> id = {}", id);
+        return ResponseEntity.ok(this.empService.queryById(id));
     }
 
-    @PutMapping("/updateEmp")
-    public ResponseResult<Boolean> updateEmp(@RequestBody Emp emp) {
-        boolean b = empService.updateByEmp(emp);
-        return new ResponseResult<>(200, "y", b);
+    /**
+     * 新增数据
+     *
+     * @param emp 实体
+     * @return 新增结果
+     */
+//    @PreAuthorize("hasAnyAuthority('emp:insert')")
+    @PostMapping
+    public ResponseEntity<Emp> add(@RequestBody Emp emp) {
+        log.info("add ===> emp = {}", emp);
+        return ResponseEntity.ok(this.empService.insert(emp));
     }
 
-    @PostMapping("/addEmp")
-    public ResponseResult<Boolean> addEmp(@RequestBody Emp emp) {
-        boolean b = empService.insert(emp);
-        return new ResponseResult<>(200, "y", b);
+    /**
+     * 编辑数据
+     *
+     * @param emp 实体
+     * @return 编辑结果
+     */
+//    @PreAuthorize("hasAnyAuthority('emp:update')")
+    @PutMapping
+    public ResponseEntity<Emp> edit(@RequestBody Emp emp) {
+        log.info("edit ===> emp = {}", emp);
+        return ResponseEntity.ok(this.empService.update(emp));
     }
+
+    /**
+     * 删除数据
+     *
+     * @param id 主键
+     * @return 删除是否成功
+     */
+//    @PreAuthorize("hasAnyAuthority('emp:delete')")
+    @DeleteMapping("{id}")
+    public ResponseEntity<Boolean> deleteById(@PathVariable("id") Integer id) {
+        log.info("deleteById ===> id = {}", id);
+        return ResponseEntity.ok(this.empService.deleteById(id));
+    }
+
 }
+

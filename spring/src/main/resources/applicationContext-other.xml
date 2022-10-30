@@ -5,5 +5,5 @@
        http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 <!--    主配置文件引入了本配置文件-->
-    <bean id="schoolOther" class="priv.noby.note.entity.School"/>
+    <bean id="schoolOther" class="priv.noby.spring.entity.School"/>
 </beans>

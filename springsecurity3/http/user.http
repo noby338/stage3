@@ -1,0 +1,29 @@
+### 登录noby，administrator拥有所有权限
+POST http://localhost:8080/user/login
+Content-Type: application/json
+
+{
+  "username": "noby",
+  "password": "123"
+}
+
+### 登录kace，user拥有dep权限
+POST http://localhost:8080/user/login
+Content-Type: application/json
+
+{
+  "username": "kace",
+  "password": "123"
+}
+
+### 登录july，guste拥有emp权限
+POST http://localhost:8080/user/login
+Content-Type: application/json
+
+{
+  "username": "july",
+  "password": "123"
+}
+
+
+

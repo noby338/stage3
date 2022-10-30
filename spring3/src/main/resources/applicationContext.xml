@@ -26,16 +26,16 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
     </bean>
     <!--配置 SqlSessionFactoryBean，创建 SqlSession 对象 (来自 Spring mybatis 的整合包)-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="typeAliasesPackage" value="priv.noby.note.entity"/>
+        <property name="typeAliasesPackage" value="priv.noby.spring3.entity"/>
         <property name="dataSource" ref="dataSource"/>
     </bean>
     <!--MapperScannerConfigurer，用于扫描 Dao 和创建 sqlSession-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="priv.noby.note.dao"/>
+        <property name="basePackage" value="priv.noby.spring3.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
-    <bean id="studentService" class="priv.noby.note.service.impl.StudentServiceImpl">
+    <bean id="studentService" class="priv.noby.spring3.service.impl.StudentServiceImpl">
         <property name="studentDao" ref="studentDao"/>
     </bean>
 </beans>

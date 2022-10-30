@@ -12,7 +12,7 @@
     <mvc:default-servlet-handler/>
 
     <!--配置controller-->
-    <bean id="/my.do" class="priv.noby.note.controller.MyController"/>
+    <bean id="/my.do" class="priv.noby.springmvc.controller.MyController"/>
 
     <!--配置视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

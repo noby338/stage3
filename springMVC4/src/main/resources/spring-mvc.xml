@@ -10,7 +10,7 @@
 ">
 
     <!--Controller的组件扫描(用于使用@controller和RequestMapping注解)-->
-    <context:component-scan base-package="priv.noby.note.controller"/>
+    <context:component-scan base-package="priv.noby.springmvc4.controller"/>
 
     <!--配置内部资源试图解析器-->
 <!--    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->

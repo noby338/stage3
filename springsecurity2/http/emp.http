@@ -1,0 +1,3 @@
+### 登录noby和july具有该权限执行(用户密码对应明文均为123)
+GET http://localhost:8080/emp/1
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqYXZhIiwiZXhwIjoxNjY3MTIwNDM1LCJpYXQiOjE2NjcxMTg2MzUsInVzZXJuYW1lIjoia2FjZSJ9.oUqth5ApSgdpvF6IOAVRIfnc5NU2WtFXDx6sM8IzVr4

@@ -1,0 +1,3 @@
+### 测试controller，引入springsecurity后默认需要登录认证
+GET http://localhost:8080/student/selectById/1
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqYXZhIiwiZXhwIjoxNjY3MTE5ODkyLCJpYXQiOjE2NjcxMTgwOTIsInVzZXJuYW1lIjoia2FjZSJ9.Ms-BTVI61G7M3Q0bOty_PocfjTZLSS1TlQ7xeIkVaO8
