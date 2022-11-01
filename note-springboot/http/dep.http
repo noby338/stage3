@@ -1,0 +1,11 @@
+
+### july登录后携带正确token，测试该controller没有未授权(empControler的权限)，响应自定义授权异常403
+#smg中的 不予许访问 来自springsecurity底层
+POST http://localhost:8080/note-springboot/dep/1/5
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqYXZhIiwiZXhwIjoxNjY3Mjg2NDY0LCJpYXQiOjE2NjcyODQ2NjQsInVzZXJuYW1lIjoianVseSJ9.W_NJveBnmfIYR6rtp5BQckoIeOeiEjo1bkjbthnbMVo
+Content-Type: application/json
+
+{
+
+}
+

@@ -4,7 +4,6 @@ GET http://localhost:8080/emp/1
 token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqYXZhIiwiZXhwIjoxNjY3MTIyODMzLCJpYXQiOjE2NjcxMjEwMzMsInVzZXJuYW1lIjoia2FjZSJ9.CL01ekqPObJXxgHC-IfUpMIWV-mQNSOkypmoI6wGWSw
 
 ### kace登录后携带错误token，测试该controller没有未认证，响应自定义认证异常4010
-#smg中的 不予许访问 来自springsecurity底层
 GET http://localhost:8080/emp/1
 token: MjEwMzMsInVzZX
 

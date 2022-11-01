@@ -16,8 +16,8 @@ import java.io.IOException;
 public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
-        //因为系统自带的编码过滤器处理优先级低于本过滤器，因此需自定义处理，json默认为utf-8编码，无需设置charset=utf-8
-        httpServletResponse.setContentType("application/json");
+        //因为系统自带的编码过滤器处理优先级低于本过滤器，因此需自定义处理
+        httpServletResponse.setContentType("application/json;charset=UTF-8");
         //利用jackson对象转换为json
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.writeValue(httpServletResponse.getWriter(), new ResponseResult<>(4010, e.getMessage(), "自定义认证异常"));

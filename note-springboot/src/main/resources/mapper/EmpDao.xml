@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="priv.noby.notespringboot.dao.EmpDao">
+
+    <resultMap type="priv.noby.notespringboot.entity.Emp" id="EmpMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <association property="dep" column="did" javaType="dep" select="selectDepById"/>
+    </resultMap>
+    <select id="selectDepById" resultType="Dep">
+        select id, name
+        from dep
+        where id = #{did}
+    </select>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="EmpMap">
+        select id,
+               name,
+               did
+        from emp
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="EmpMap">
+        select
+        id, name ,did
+        from emp
+        <where>
+            <if test="emp.id != null">
+                and id = #{emp.id}
+            </if>
+            <if test="emp.name != null and emp.name != ''">
+                and name = #{emp.name}
+            </if>
+            <if test="emp.dep != null">
+                <if test="emp.dep.id != null">
+                    and did = #{emp.dep.id }
+                </if>
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from emp
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="dep != null">
+                <if test="dep.id != null">
+                    and did = #{dep.id}
+                </if>
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into emp(name, did)
+        values (#{name}, #{dep.id})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update emp
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="dep != null">
+                <if test="dep.id != null">
+                    did = #{dep.id},
+                </if>
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from emp
+        where id = #{id}
+    </delete>
+
+</mapper>
+
