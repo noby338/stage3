@@ -17,6 +17,7 @@ public class SchoolFactoryTest extends TestCase {
      */
     public void test() {
         ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+        System.out.println();
         School schoolStatic = (School) ac.getBean("schoolStatic");
         School schoolDynamic = (School) ac.getBean("schoolDynamic");
         System.out.println("studentStatic = " + schoolStatic);

@@ -1,64 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?>
-    <beans xmlns="http://www.springframework.org/schema/beans"
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xmlns:aop="http://www.springframework.org/schema/aop"
-           xmlns:context="http://www.springframework.org/schema/context"
-           xmlns:tx="http://www.springframework.org/schema/tx"
-           xsi:schemaLocation="
-       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
-">
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        ">
 
-    <context:component-scan base-package="priv.noby.spring7.service"/>
-    <context:property-placeholder location="db.properties" system-properties-mode="NEVER"/>
-    <!--配置 SqlSessionFactoryBean，创建 SqlSession 对象 (来自 Spring mybatis 的整合包)-->
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="typeAliasesPackage" value="priv.noby.spring7.entity"/>
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
-    <!--配置数据源-->
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+    <context:property-placeholder location="classpath:db.properties"/>
+
+    <bean id="dataResource" class="com.alibaba.druid.pool.DruidDataSource">
         <property name="driverClassName" value="${jdbc.driverClassName}"/>
         <property name="url" value="${jdbc.url}"/>
         <property name="username" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
     </bean>
-    <!--MapperScannerConfigurer，用于扫描 Dao 和创建 sqlSession-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="typeAliasesPackage" value="priv.noby.spring7.entity"/>
+        <property name="dataSource" ref="dataResource"/>
+    </bean>
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="priv.noby.spring7.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
-    <!--配置平台事务管理器-->
-    <!--不同的dao层会使用不同的实现-->
-    <!--该标签对标编程式事务中的PlatformTransactionManager接口的作用-->
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"/>
+    <bean id="empService" class="priv.noby.spring7.service.impl.EmpServiceImpl">
+        <property name="empDao" ref="empDao"/>
     </bean>
 
-    <!--通知  事务的增强-->
-    <!--该标签对标编程式事务中的TransactionDefinition对象的作用-->
-    <tx:advice id="txAdvice" transaction-manager="transactionManager">
-        <!--控制事务的隔离级别、传播行为、超时时间、是否可读等事务的属性信息-->
-        <tx:attributes>
-            <!--tx:method代表切点方法的事务参数的配置，不同的方法可配置不同的事务属性-->
-            <!-- isolation:事务的隔离级别 propogation：事务的传播行为 timeout：超时时间 read-only：是否只读-->
-            <tx:method name="transfer" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
-<!--            <tx:method name="save" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>-->
-<!--            <tx:method name="findAll" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true"/>-->
-<!--            <tx:method name="update*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true"/>-->
-            <!--任意方法，且使用默认配置-->
-<!--            <tx:method name="*"/>-->
-        </tx:attributes>
-    </tx:advice>
-
-    <!--配置事务的aop织入-->
-    <aop:config>
-        <!--advice-ref="txAdvice"表示引用事务的通知，pointcut表示切入点(哪一个方法使用事务)-->
-        <aop:advisor advice-ref="txAdvice" pointcut="execution(* priv.noby.note.service.impl.*.*(..))"/>
-<!--        <aop:pointcut id="txPointcut" expression="execution(* AccountServiceImpl.transfer(..))"/>-->
-<!--        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>-->
-    </aop:config>
 </beans>
+
+
+

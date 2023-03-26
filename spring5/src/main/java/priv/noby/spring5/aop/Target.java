@@ -11,6 +11,6 @@ public class Target implements TargetInterface {
     public void method() {
         System.out.println("Target.method 目标对象的目标方法运行");
         //模拟异常通知
-//        int i = 1/0;
+        int i = 1/0;
     }
 }

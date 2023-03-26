@@ -4,6 +4,9 @@ GET http://localhost:8080/springMVC5/student/select?name=诺比&age=20
 ### springMVC 请求 entity数据类型的封装
 GET http://localhost:8080/springMVC5/student/select2?name=诺比&age=20
 
+### springMVC 请求 数组数据类型封装
+GET http://localhost:8080/springMVC5/student/select3?nums=10&nums=20&nums=30
+
 ### springMVC 请求 集合数据类型借助VO类的封装
 GET http://localhost:8080/springMVC5/student/select4?studentList[0].name=诺比&studentList[0].age=21&studentList[1].name=凯斯&studentList[1].age=22
 

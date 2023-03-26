@@ -1,11 +1,12 @@
 package priv.noby.mavenssm.dao;
 
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import priv.noby.note.entity.Dep;
+import priv.noby.mavenssm.entity.Dep;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
@@ -33,6 +34,4 @@ public class DepDaoTest {
         List<Dep> deps = depdao.selectAll();
         System.out.println("deps = " + deps);
     }
-
-
 }

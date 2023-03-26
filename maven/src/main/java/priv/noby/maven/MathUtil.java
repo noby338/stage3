@@ -1,7 +1,5 @@
 package priv.noby.maven;
 
-import javax.xml.transform.Result;
-
 public class MathUtil {
     public static int addition(int... i) {
         int result = 0;

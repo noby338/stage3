@@ -30,7 +30,7 @@ public class MyAspect {
         //Proceeding JoinPoint:  正在执行的连接点(切点)
         System.out.println("MyAspect.around 切面对象的环绕前置通知");
         Object proceed = pjp.proceed();//切点方法
-        System.out.println("MyAspect.around 切面对象的环绕前置通知");
+        System.out.println("MyAspect.around 切面对象的环绕后置通知");
         return proceed;
     }
 

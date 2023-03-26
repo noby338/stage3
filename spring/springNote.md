@@ -7,7 +7,6 @@ springNote
   2. 调用
      1. ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
      2. StudentService studentSer = (StudentService)ac.getBean("studentSer");
-
 * ApplicationContext 和 BeanFactory 实例化的区别
   * ApplicationContext 是 BeanFactory 的子接口
   * 使用 ApplicationContext 初始化 Spring 容器时，立即创建所有的 Bean（启动慢，第一个用户的访问速度不受影响）（推荐）

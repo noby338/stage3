@@ -20,7 +20,7 @@ public class MyAspect{
      *
      * 用于其他通知复用该切点表达式
      */
-    @Pointcut("execution(* priv.noby.note.aopanno.*.*(..))")
+    @Pointcut("execution(* priv.noby.spring5.aopanno.*.*(..))")
     public void pointcut(){}
 
     /**
@@ -44,13 +44,13 @@ public class MyAspect{
     /**
      * 环绕通知 <aop:around> 用于配置环绕通知。指定增强的方法在切入点方法之前和之后都执行
      */
-    //直接书写欠点表达式
-    @Around("execution(* priv.noby.note.aopanno.*.*(..))")
+    //直接书写切点表达式
+    @Around("execution(* priv.noby.spring5.aopanno.*.*(..))")
     public Object around(ProceedingJoinPoint pjp) throws Throwable {
         //Proceeding JoinPoint:  正在执行的连接点(切点)
         System.out.println("MyAspect.around 切面对象的环绕前置通知");
         Object proceed = pjp.proceed();//切点方法
-        System.out.println("MyAspect.around 切面对象的环绕前置通知");
+        System.out.println("MyAspect.around 切面对象的环绕后置通知");
         return proceed;
     }
 

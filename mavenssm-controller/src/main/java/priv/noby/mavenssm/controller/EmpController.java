@@ -2,8 +2,8 @@ package priv.noby.mavenssm.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import priv.noby.note.entity.Emp;
-import priv.noby.note.service.EmpService;
+import priv.noby.mavenssm.entity.Emp;
+import priv.noby.mavenssm.service.EmpService;
 
 import javax.annotation.Resource;
 import java.util.List;

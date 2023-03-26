@@ -34,4 +34,13 @@ Content-Type: application/json
   "password": "123"
 }
 
+### 登录noby，administrator拥有所有权限，linux
+POST http://192.168.122.128:8080/note-springboot/user/login
+Content-Type: application/json
+
+{
+  "username": "noby",
+  "password": "123"
+}
+
 

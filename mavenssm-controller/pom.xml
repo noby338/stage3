@@ -14,7 +14,7 @@
     </parent>
 
     <!--当与父工程的坐标相同时可省略-->
-    <!--    <groupId>priv.noby.note</groupId>-->
+    <!--    <groupId>priv.noby</groupId>-->
     <artifactId>mavenssm-controller</artifactId>
     <packaging>war</packaging>
     <!--当与父工程的版本号相同时可省略-->
@@ -22,7 +22,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>priv.noby.note</groupId>
+            <groupId>priv.noby</groupId>
             <artifactId>mavenssm-service</artifactId>
 <!--            <version>1.0-SNAPSHOT</version>-->
         </dependency>

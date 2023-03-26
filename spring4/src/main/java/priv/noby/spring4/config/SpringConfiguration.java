@@ -43,6 +43,4 @@ public class SpringConfiguration {
         druidDataSource.setPassword(password);
         return druidDataSource;
     }
-
-
 }

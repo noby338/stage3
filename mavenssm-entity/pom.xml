@@ -14,7 +14,7 @@
     </parent>
 
     <!--当与父工程的坐标相同时可省略-->
-<!--    <groupId>priv.noby.note</groupId>-->
+<!--    <groupId>priv.noby</groupId>-->
     <artifactId>mavenssm-entity</artifactId>
     <!--当与父工程的版本号相同时可省略-->
 <!--    <version>1.0-SNAPSHOT</version>-->

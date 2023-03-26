@@ -12,7 +12,7 @@
     <!--Controller的组件扫描(用于使用@controller和RequestMapping注解)-->
     <context:component-scan base-package="priv.noby.springmvc4.controller"/>
 
-    <!--配置内部资源试图解析器-->
+    <!--配置内部资源视图解析器-->
 <!--    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
 <!--        &lt;!&ndash;controller返回时的路径书写可省略该前缀，默认为redirect:&ndash;&gt;-->
 <!--        <property name="prefix" value="/jsp/"/>-->

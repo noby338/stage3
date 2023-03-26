@@ -3,7 +3,7 @@ springMVC
 
 * 使用通过配置文件配置、使用 springMVC
   * 坐标（该坐标包括了4个spring的核心包和AOP和web包）
-    * `<dependency>
+    `<dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-webmvc</artifactId>
         <version>5.2.15.RELEASE</version>

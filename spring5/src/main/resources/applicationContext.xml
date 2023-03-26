@@ -21,11 +21,11 @@
             <aop:pointcut id="myPointcut" expression="execution(* priv.noby.spring5.aop.*.*(..))"/>
             <!--切面：切点+通知-->
             <!--method="before"表示的是myAspect类中的before()方法为增强的代码-->
-<!--            <aop:before method="before" pointcut="execution(public void Target.method())"/>-->
-<!--            <aop:after-returning method="afterReturning" pointcut="execution(* priv.noby.note.aop.*.*(..))"/>-->
-<!--            <aop:around method="around" pointcut="execution(* priv.noby.note.aop.*.*(..))"/>-->
-<!--            <aop:after-throwing method="afterThrowing" pointcut="execution(* priv.noby.note.aop.*.*(..))"/>-->
-<!--            <aop:after method="after" pointcut="execution(* priv.noby.note.aop.*.*(..))"/>-->
+<!--            <aop:before method="before" pointcut="execution(* priv.noby.spring5.aop.*.*(..))"/>-->
+<!--            <aop:after-returning method="afterReturning" pointcut="execution(* priv.noby.spring5.aop.*.*(..))"/>-->
+<!--            <aop:around method="around" pointcut="execution(* priv.noby.spring5.aop.*.*(..))"/>-->
+<!--            <aop:after-throwing method="afterThrowing" pointcut="execution(* priv.noby.spring5.aop.*.*(..))"/>-->
+<!--            <aop:after method="after" pointcut="execution(* priv.noby.spring5.aop.*.*(..))"/>-->
 
             <!--使用抽取的表达式-->
             <aop:around method="around" pointcut-ref="myPointcut"/>

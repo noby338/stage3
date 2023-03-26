@@ -61,6 +61,7 @@
                     <path>/springMVC</path>
                     <!--设置 get 请求的编码方式-->
                     <uriEncoding>utf-8</uriEncoding>
+                    <contextReloadable>true</contextReloadable>
                 </configuration>
             </plugin>
         </plugins>

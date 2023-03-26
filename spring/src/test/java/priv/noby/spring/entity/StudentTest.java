@@ -1,13 +1,8 @@
 package priv.noby.spring.entity;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import priv.noby.spring.dao.StudentDao;
 
 /**
  * 使用student测试spring的无参构造方法实例化
@@ -18,9 +13,6 @@ import priv.noby.spring.dao.StudentDao;
  * @author Noby
  * @since 2022/10/8
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-//加载配置类的注解
-@ContextConfiguration("classpath:applicationContext.xml")
 public class StudentTest {
     /**
      * 单例模式和原型模式
@@ -46,12 +38,12 @@ public class StudentTest {
         System.out.println("原型模式实例化的两个对象是否相同："+(studentPrototype == studentPrototype2));
 
         /*
-        Student.Student 无参构造 studentSingleton
-        Student.Student 无参构造 studentSingleton
-        Student.init 在该test中可忽略
+        Student.Student 无参构造
+        Student.Student 无参构造
+
         单例模式实例化的两个对象是否相同：true
-        Student.Student 无参构造 studentPrototype
-        Student.Student 无参构造 studentPrototype
+        Student.Student 无参构造
+        Student.Student 无参构造
         原型模式实例化的两个对象是否相同：false
          */
 
@@ -68,6 +60,7 @@ public class StudentTest {
         //ApplicationContext 应用程序上下文，Spring 的核心类，该语句作用是读取配置文件
         //可在下一行加入断点查看bean的实例化时机，单例模式实例化的时机为Spring容器被创建，原型模式实例化的时机为调用getBean()方法
         ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+        System.out.println();
         //根据配置文件中的 bean 创建对象(底层调用Student的无参构造方法)
         Student studentInitAndDestroySingleton = (Student) ac.getBean("studentInitAndDestroySingleton");
         Student studentInitAndDestroySingleton2 = (Student) ac.getBean("studentInitAndDestroySingleton");
@@ -79,26 +72,18 @@ public class StudentTest {
         ((ClassPathXmlApplicationContext)ac).close();
 
         /*
-        Student.Student 无参构造 studentSingleton
-        Student.Student 无参构造 studentInitAndDestroySingleton
-        Student.init studentInitAndDestroySingleton
-        Student.Student 无参构造 studentInitAndDestroyPrototype
-        Student.init studentInitAndDestroyPrototype
-        Student.Student 无参构造 studentInitAndDestroyPrototype2
-        Student.init studentInitAndDestroyPrototype2
-        Student.destroy studentInitAndDestroySingleton
+        Student.Student 无参构造
+        Student.init
+        Student.Student 无参构造
+        Student.init
+
+        Student.Student 无参构造
+        Student.init
+        Student.Student 无参构造
+        Student.init
+        Student.destroy
+        Student.destroy
          */
     }
 
-    @Autowired
-    private StudentDao studentDao;
-    /**
-     * 测试使用@RunWith(SpringJUnit4ClassRunner.class)和@ContextConfiguration("")加载配置文件
-     */
-    @Test
-    public void test3() {
-        //不需要在实例化如下对象，注解已实现
-//        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
-        System.out.println("studentDao = " + studentDao);
-    }
 }

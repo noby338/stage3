@@ -1,6 +1,6 @@
 package priv.noby.mavenssm.dao;
 
-import priv.noby.note.entity.Emp;
+import priv.noby.mavenssm.entity.Emp;
 
 import java.util.List;
 

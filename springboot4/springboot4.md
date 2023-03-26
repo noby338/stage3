@@ -9,5 +9,6 @@
   * 配置文件中配置或使用@DateTimeFormat(pattern = "yyyy-MM-dd")注解
 * springboot中项目虚拟目录和本地磁盘的映射配置
   * 配置类中配置
+* 启动类可以作为配置类使用
 
   

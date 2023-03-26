@@ -3,6 +3,18 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>6</source>
+                    <target>6</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <!--定义该工程的父工程-->
     <parent>
@@ -14,14 +26,14 @@
     </parent>
 
     <!--当与父工程的坐标相同时可省略-->
-    <!--    <groupId>priv.noby.note</groupId>-->
-    <artifactId>mavenssm-servic</artifactId>
+    <!--    <groupId>priv.noby</groupId>-->
+    <artifactId>mavenssm-service</artifactId>
     <!--当与父工程的版本号相同时可省略-->
     <!--    <version>1.0-SNAPSHOT</version>-->
 
     <dependencies>
         <dependency>
-            <groupId>priv.noby.note</groupId>
+            <groupId>priv.noby</groupId>
             <artifactId>mavenssm-dao</artifactId>
 <!--            <version>1.0-SNAPSHOT</version>-->
         </dependency>

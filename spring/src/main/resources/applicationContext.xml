@@ -10,7 +10,6 @@
 <!--    引入其他配置文件-->
     <import resource="applicationContext-other.xml"/>
 
-
 <!--    Bean 的作用域-->
     <!--单例模式（默认），每次调用getBean()获得的都是同一个对象-->
     <bean id="studentSingleton" class="priv.noby.spring.entity.Student" scope="singleton"/>
@@ -53,7 +52,7 @@
 <!--        <property name="studentDao" ref="studentDao"/>-->
     </bean>
 
-<!--    依赖注入引用数据类型的参数名自动注入(设值注入)-->
+<!--    依赖注入引用数据类型的类型自动注入(设值注入)-->
     <bean id="studentServiceByType" class="priv.noby.spring.service.impl.StudentServiceImpl" autowire="byType">
         <!--当属性为引用数据类型，且属性类型和某标签的类型相同时自动注入该标签及其子类型的标签到属性中，注意：当存在属性类型和多个标签的类型相同时会抛出异常-->
 <!--        <property name="studentDao" ref="studentDao"/>-->
