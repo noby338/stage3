@@ -37,7 +37,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (1,'noby',1900),(2,'kace',2000);
+INSERT INTO `account` VALUES (1,'noby',2000),(2,'kace',2000);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,7 +81,7 @@ CREATE TABLE `emp` (
   UNIQUE KEY `Emp_id_uindex` (`id`),
   KEY `emp_dep_id_fk` (`did`),
   CONSTRAINT `emp_dep_id_fk` FOREIGN KEY (`did`) REFERENCES `dep` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,7 +90,7 @@ CREATE TABLE `emp` (
 
 LOCK TABLES `emp` WRITE;
 /*!40000 ALTER TABLE `emp` DISABLE KEYS */;
-INSERT INTO `emp` VALUES (1,'许丽华',4),(2,'周宁',5),(3,'厉红梅',5),(4,'严秀华',2),(5,'戴建',2),(6,'许艳',2),(7,'姚东',1),(8,'王洋',5),(9,'田健',3),(10,'蒋军',4),(11,'朱俊',2),(12,'齐娜',2),(13,'谢峰',4),(14,'高慧',4),(15,'刘洁',4),(16,'常琳',3),(17,'周秀荣',2),(18,'封琳',1),(19,'吕磊',1),(20,'吴博',3);
+INSERT INTO `emp` VALUES (3,'厉红梅',5),(4,'严秀华',2),(5,'戴建',2),(6,'许艳',2),(7,'姚东',1),(8,'王洋',5),(9,'田健',3),(10,'蒋军',4),(11,'朱俊',2),(12,'齐娜',2),(13,'谢峰',4),(14,'高慧',4),(15,'刘洁',4),(16,'常琳',3),(17,'周秀荣',2),(18,'封琳',1),(19,'吕磊',1),(20,'吴博',3),(21,'养胃',2);
 /*!40000 ALTER TABLE `emp` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -267,4 +267,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-30 23:32:05
+-- Dump completed on 2023-03-28 21:54:46

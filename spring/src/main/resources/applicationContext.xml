@@ -24,7 +24,9 @@
 <!--    工厂静态方法实例化-->
     <bean id="schoolStatic" class="priv.noby.spring.factory.StaticFactory" factory-method="getSchool"/>
 <!--    工厂实例方法实例化-->
-    <bean id="schoolDynamicFactory" class="priv.noby.spring.factory.DynamicFactory"/>
+    <bean id="schoolDynamicFactory" class="priv.noby.spring.factory.DynamicFactory">
+        <property name="type" value="admin" /> <!-- 设置工厂实例的类型，以控制工厂创建的bean的类型 -->
+    </bean>
     <bean id="schoolDynamic" factory-bean="schoolDynamicFactory" factory-method="getSchool"/>
 
 <!--    依赖注入(设值注入)-->

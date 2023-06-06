@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 登录模拟拦截器的使用
+ * 异常的捕获
  *
  * @author Noby
  * @since 2022/10/22

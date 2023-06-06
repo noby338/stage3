@@ -18,5 +18,4 @@ public class MyWebMvcConfig {
         System.out.println("servet.port = " + port);
         System.out.println("info = " + info);
     }
-
 }

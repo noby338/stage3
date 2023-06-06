@@ -63,7 +63,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 //配置自定义授权异常处理
                 .accessDeniedHandler(new AccessDeniedHandlerImpl());
 
-//        //SpringSecurity 允许跨域访问
+        //SpringSecurity 允许跨域访问
         http.cors();
     }
 }

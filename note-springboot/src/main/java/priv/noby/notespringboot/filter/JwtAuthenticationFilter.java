@@ -21,7 +21,7 @@ import java.io.IOException;
 /**
  * 自定义Filter实现token拦截验证(判断用户是否登录)
  * <p>
- * 该类过滤器的使用只需实现OncePerRequestFilter接口，无需配置
+ * 该类过滤器的使用只需实现OncePerRequestFilter接口
  * <p>
  * 为了是认证过滤器在springsecurity的filter和interceptor之前执行，使用filter而非interceptor(filter优先级高)
  * 该filter在配置类中配置后，在其他springsecurity自带filter之前执行

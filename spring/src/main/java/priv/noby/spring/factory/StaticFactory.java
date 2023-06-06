@@ -15,6 +15,6 @@ public class StaticFactory {
 
     public static School getSchool(){
         System.out.println("StaticFactory.getSchool");
-        return new School();
+        return new School(1,"学校");
     }
 }

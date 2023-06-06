@@ -9,7 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  * @SpringBootApplication 为启动类注解
  */
-
 @SpringBootApplication
 public class SpringbootApplication {
 

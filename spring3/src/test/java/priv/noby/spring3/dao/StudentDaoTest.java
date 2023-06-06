@@ -1,6 +1,5 @@
 package priv.noby.spring3.dao;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -10,18 +9,22 @@ public class StudentDaoTest {
 
     private ApplicationContext applicationContext;
     private StudentDao studentDao;
-
-    @Before
-    public void setUp(){
+ 
+//    @Before
+//    public void setUp(){
+//        applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+//        studentDao = (StudentDao) applicationContext.getBean("studentDao");
+//    }
+    @Test
+    public void Test2() {
         applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        studentDao = (StudentDao) applicationContext.getBean("studentDao");
+        System.out.println("applicationContext = " + applicationContext);
     }
     @Test
     public void testSelectById() {
         Student student = studentDao.selectById(1);
         System.out.println("student = " + student);
     }
-
     @Test
     public void testInsert() {
         Student student = new Student();

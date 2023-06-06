@@ -31,7 +31,7 @@ public class MyWebMvcConfig {
             public void addInterceptors(InterceptorRegistry registry) {
                 registry.addInterceptor(new LoginInterceptor())
 //                        .addPathPatterns("/**") //添加拦截路径为所有路径
-                        .addPathPatterns("/student/doSomethingAfterLogin") //添加拦截路径为所有路径
+                        .addPathPatterns("/student/doSomethingAfterLogin")
                         .excludePathPatterns("/student/login");//排除特定的页面和controller
             }
 
