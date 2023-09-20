@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="priv.noby.mybatisgenerator.dao.AccountDao">
+    <update id="update">
+        update account
+        set money=#{money}
+        where name = #{name}
+    </update>
+
+    <select id="selectByName" resultType="priv.noby.mybatisgenerator.entity.Account">
+        select *
+        from account
+        where name = #{name}
+    </select>
+</mapper>

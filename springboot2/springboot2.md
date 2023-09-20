@@ -8,7 +8,7 @@ springboot2 2022/6/14
     * 配置实体类包扫描
     * 配置映射文件路径
     * 配置数据库连接
-  * 启动类上加 @MapperScan("priv.noby.springboot2.dao") 配置 dao 实体类包扫描 
+  * 启动类上加 @MapperScan("priv.noby.mybatisgenerator.dao") 配置 dao 实体类包扫描 
   * 事务管理
     * 启动类配置 @EnableTransactionManagement
     * 事务类配置 @Transactional

@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 // MapperScannerConfigxxx:扫描指定包下所有的接口，然后所有接口在编译之后都会生成相应的实现类，该注解可代替mapper接口的@Mapper的注解
-@MapperScan("priv.noby.springboot2.dao")
+@MapperScan("priv.noby.mybatisgenerator.dao")
 // 配置注解驱动(可省略)
 //@EnableTransactionManagement
 @SpringBootApplication

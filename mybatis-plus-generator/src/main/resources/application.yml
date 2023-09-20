@@ -1,0 +1,27 @@
+server:
+  port: 8080
+logging:
+  level:
+    priv.noby.mybatisplusgenerator: debug
+  pattern:
+    console: "[%thread] %-5level %logger{0} - %msg%n"
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/stage3?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: root
+mybatis-plus:
+#  config-location: classpath:mybatis-config.xml # 可用于配置mybatis的全局属性，该文件的大多配置都可在application.yml中配置
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: priv.noby.mybatisplusgenerator.entity
+  global-config:
+    db-config:
+      id-type: auto # 主键策略，默认为auto，可选值为auto、input、id_worker、uuid
+#      table-prefix: tb_ # 设置表的前缀
+  configuration:
+    map-underscore-to-camel-case: true # 配置驼峰转换，默认为true
+    cache-enabled: true # 开启二级缓存，默认为true
+
+
+
